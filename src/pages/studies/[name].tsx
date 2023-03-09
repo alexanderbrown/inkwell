@@ -1,98 +1,22 @@
-import type { Dict, QuestionChangeEvent, Question, Study } from '@/types'
 import { GetServerSidePropsContext } from 'next'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { HiOutlineHome } from "react-icons/hi";
 
-import ResetDialog from '@/components/ResetDialog'
-
+import type { Dict, Study } from '@/types'
 import config from '@/config'
+
+import QuestionComponent from '@/components/Question';
+import ResetDialog from '@/components/ResetDialog'
 import ResponsesReview from '@/components/ResponsesReview'
 import InvalidEntriesDialog from '@/components/InvalidEntriesDialog'
-import DateInput from '@/components/QuestionInputs/DateComponent'
-import NumberInput from '@/components/QuestionInputs/NumberComponent'
-import StringInput from '@/components/QuestionInputs/StringComponent'
-import TextInput from '@/components/QuestionInputs/TextComponent'
-import SelectInput from '@/components/QuestionInputs/SelectComponent'
+import Link from 'next/link';
 
-interface StudyComponentProps {
-    study: Study
-}
 
-interface QuestionComponentProps {
-    question: Question
-    formState: Dict
-    setFormState: ((callback: (prev_state: Dict) => Dict) => void)
-    registerInvalid: (prompt: string) => void
-    deregisterInvalid: (prompt: string) => void
-}
-
-function Question({question, formState, setFormState, registerInvalid, deregisterInvalid}: QuestionComponentProps) {
-
-    const [value, setLocalValue] = useState('')
-
-    // How to update state
-    function updateInputValue(e: QuestionChangeEvent) {
-        setLocalValue(e.target.value); 
-        setFormState((prev)=>{
-            return {...prev, [e.target.id]: e.target.value}
-        })
-    }
-
-    // Validation logic
-    const fails_validation = "mandatory" in question && question.mandatory && value===''
-    useEffect(() => {
-        if (fails_validation){
-            registerInvalid(question.prompt)
-        } else {
-            deregisterInvalid(question.prompt)
-        }
-    }, [fails_validation])
-
-    // Set Visibility and remove from form state if invisible; add back in if visible
-    let element_visible: boolean = true
-    if (question.depends_on) {
-        element_visible = formState[question.depends_on.id] === question.depends_on.value
-    }
-
-    // Choose a control
-    let InputTagOptions = {
-        "string":       <StringInput question={question} update_value={updateInputValue} />, 
-        "text":         <TextInput question={question} update_value={updateInputValue} />,
-        "number":       <NumberInput question={question} update_value={updateInputValue} step={1}/>,
-        "temperature":  <NumberInput question={question} update_value={updateInputValue} step={0.1}/>,
-        "date":         <DateInput question={question} update_value={updateInputValue} />, 
-        "select":       <SelectInput question={question} update_value={updateInputValue}/>
-    }
-
-    // Render!
-    let parent_div_classes = element_visible? 'flex ' : 'hidden '
-    parent_div_classes += (question.depends_on? 'ml-8 mr-4 ': 'mx-4 ')
-    parent_div_classes += 'border-2 border-slate-300 rounded overflow-hidden bg-slate-100  text-slate-700 '
-    parent_div_classes += 'focus-within:bg-slate-700 focus-within:text-slate-100 focus-within:rounded-lg'
-
-    return (
-        <div key={question.prompt} 
-             className={parent_div_classes}>
-            <div className="w-60 flex-none">
-                <label htmlFor={question.prompt}
-                    className="p-2 text-right w-100% float-right"> 
-                    {question.prompt}
-                </label>
-            </div>
-            <div className="flex-1 flex flex-col justify-center bg-slate-100 focus-within:bg-slate-200 peer">
-                {InputTagOptions[question.type]}
-            </div>
-            {(fails_validation) ? <div className='flex flex-col justify-center align-middle pr-2 bg-slate-100 peer-focus-within:bg-slate-200'>
-                <p className='text-red-500 font-bold text-lg'>*</p>
-            </div> : ''}
-        </div> 
-    )
-}
-
-export default function Study(props: StudyComponentProps) {
+export default function StudyComponent({study}: {study: Study}) {
     let [showResetDialog, setResetDialogVisibility] = useState(false)
     let [showInvalidDialog, setInvalidDialogVisibility] = useState(false)
     let [showForm, setFormVisbility] = useState(true)
-    let [responses, setResponses] = useState<Dict>(Object.fromEntries(props.study.questions.map(question => [question.id, ''])))
+    let [responses, setResponses] = useState<Dict>(Object.fromEntries(study.questions.map(question => [question.id, ''])))
     let [invalidResponses, setInvalidResponses] = useState<Array<string>>([])
 
     function registerInvalid(prompt: string) {
@@ -125,28 +49,28 @@ export default function Study(props: StudyComponentProps) {
     }
 
     let responses_formatted = responses
-    props.study.questions
+    study.questions
         .filter(question => question.depends_on)
         .forEach(question => {
             const parent_id = question.depends_on?.id || ''
             if (responses_formatted[parent_id] !== question.depends_on?.value){
-                responses_formatted[question.id] = props.study.options?.hidden_question_placeholder || ''
+                responses_formatted[question.id] = study.options?.hidden_question_placeholder || ''
             }
         })
     responses_formatted = Object.fromEntries(Object.entries(responses_formatted).map(([k,v])=> {
-        return [props.study.questions.filter(question => question.id===k)[0].prompt, v]}))
+        return [study.questions.filter(question => question.id===k)[0].prompt, v]}))
 
 
     return (
     <>
         <InvalidEntriesDialog isOpen={showInvalidDialog} setIsOpen={setInvalidDialogVisibility} props={invalidResponses} />
         <ResetDialog isOpen={showResetDialog} setIsOpen={setResetDialogVisibility} />
-        <StudyTitle name={props.study.name} />
+        <StudyTitle name={study.name} />
         <form className={`space-y-2 ${showForm? '' : 'hidden'}`} 
               id='study-input-form'>
             
-            {props.study.questions.map((question) => (
-                <Question question={question} key={question.id}
+            {study.questions.map((question) => (
+                <QuestionComponent question={question} key={question.id}
                           formState={responses} 
                           setFormState={setResponses}
                           registerInvalid={registerInvalid}
@@ -159,6 +83,7 @@ export default function Study(props: StudyComponentProps) {
     </>
     )
   }
+
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
     const api_url = config.server + '/api/studies/' + context.params?.name
@@ -175,13 +100,19 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     }
   }
 
+
 function StudyTitle ({name}: {name:string}) {
     return (
-        <div className="text-center text-2xl mb-10 pt-4">
-            <h1>{name}</h1>
+        <div className="flex mb-10 pt-4 justify-between items-center">
+                <Link className="text-2xl w-fit ml-4" href='/' title='Home' >
+                    <HiOutlineHome size={30}/>
+                </Link>
+                <h1 className="text-2xl w-fit">{name}</h1>
+                <h1></h1>
         </div>
     )
 }
+
 
 function FormButtons({validateForm, setResetDialogVisibility}: 
                      {validateForm: () => void, setResetDialogVisibility: (v: boolean) => void}) {

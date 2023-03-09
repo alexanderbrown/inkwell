@@ -1,5 +1,3 @@
-TODO: (P1) add another button once submitted
-
 TODO: (P2) Handle errors in json elegantly!
 
 TODO: (P2) custom lists of values for select boxes
@@ -9,6 +7,8 @@ TODO: (P2) Associated information - preamable/disclaimer, contact details [may b
 TODO: (P2) Better validation (more than just mandatory)
 
 TODO: (P2) Soft validation - warn, but allow (in some cases, where specified. E.g. mandatory use yes/no/warn rather than yes/no)
+
+TODO: (P2) Instructions and json documentation
 
 TODO: (P3) Form generator
 
