@@ -1,0 +1,10 @@
+{
+    "name": "ITES",
+    "questions": [
+        {"prompt": "MRN", "type": "text", "mandatory": true},
+        {"prompt": "DOB", "type": "date", "mandatory": true},
+        {"prompt": "Onset Date", "type": "date", "mandatory": true},
+        {"prompt": "Temperature", "type": "number", "mandatory": true},
+        {"prompt": "Shock", "type": "text", "mandatory": true}
+    ]
+}
