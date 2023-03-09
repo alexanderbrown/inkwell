@@ -35,7 +35,7 @@ export default function QuestionComponent({question, formState, setFormState, re
         } else {
             deregisterInvalid(question.prompt)
         }
-    }, [fails_validation])
+    }, [fails_validation, deregisterInvalid, registerInvalid, question.prompt])
 
     // Set Visibility and remove from form state if invisible; add back in if visible
     let element_visible: boolean = true

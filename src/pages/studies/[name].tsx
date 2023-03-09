@@ -1,9 +1,11 @@
+import path from 'path';
+import { promises as fs } from 'fs';
+
 import { GetServerSidePropsContext } from 'next'
 import { useState } from 'react'
 import { HiOutlineHome } from "react-icons/hi";
 
 import type { Dict, Study } from '@/types'
-import config from '@/config'
 
 import QuestionComponent from '@/components/Question';
 import ResetDialog from '@/components/ResetDialog'
@@ -86,12 +88,12 @@ export default function StudyComponent({study}: {study: Study}) {
 
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-    const api_url = config.server + '/api/studies/' + context.params?.name
-    const res = await fetch(api_url, {
-                                headers: {
-                                    "Content-Type": "application/json"
-                                }})
-    const study = await res.json()
+
+    const name = context.params?.name
+    const templateDirectory = path.join(process.cwd(), 'templates');
+    const filePath = path.join(templateDirectory, name + '.json')
+    const fileContents = await fs.readFile(filePath, 'utf8');
+    const study: Study = JSON.parse(fileContents)
   
     return {
       props: {

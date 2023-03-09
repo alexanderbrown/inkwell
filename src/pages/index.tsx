@@ -1,7 +1,10 @@
+import path from 'path';
+import { promises as fs } from 'fs';
+
 import Head from 'next/head'
 import { Inter } from 'next/font/google'
-import config from '@/config'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,7 +24,7 @@ export default function Home(props: HomeProps) {
       <main className={inter.className}>
         <div className='flex flex-col items-center bg-slate-200 h-screen'>
           <div className='flex items-baseline pt-4 pb-20 '>
-            <img src='quill.png' className='w-20 inline' />
+            <Image src='/quill.png' className='w-20 inline' alt='Inkwell logo' width={240} height={240}/>
             <h1 className='text-5xl text-slate-500 inline '>Inkwell</h1>
           </div>
           <div className="w-1/2">
@@ -34,8 +37,8 @@ export default function Home(props: HomeProps) {
           <div className="w-1/2 mt-8">
             <ul className="list-disc list-inside">
               {props.studies.map((study) => { return (
-                <li className="text-sky-700">
-                  <Link href={`studies/${study}`}>{study}</Link>
+                <li className="text-sky-700" key={study}>
+                  <Link href={`studies/${study}`} >{study}</Link>
                 </li>)
               })}
             </ul>
@@ -55,12 +58,10 @@ export default function Home(props: HomeProps) {
 }
 
 export async function getStaticProps() {
-  const api_url = config.server + '/api/studies'
-  const res = await fetch(api_url, {
-                              headers: {
-                                  "Content-Type": "application/json"
-                              }})
-  const studies = await res.json()
+
+  const templateDirectory = path.join(process.cwd(), 'templates');
+  const files = await fs.readdir(templateDirectory)
+  const studies = files.filter((file) => file.endsWith('.json')).map((files) => files.replace('.json', ''))
 
   return {
     props: {
