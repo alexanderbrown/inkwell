@@ -1,8 +1,8 @@
 import { Question, QuestionChangeEvent } from "@/types";
 import input_style from "./style";
 
-export default function DateComponent({question, updateValue}: 
-                             {question: Question, updateValue: (e: QuestionChangeEvent) => void}){
+export default function DateComponent({question, update_value}: 
+                             {question: Question, update_value: (e: QuestionChangeEvent) => void}){
 
     let default_date: string | undefined
     if (question.default==='today'){
@@ -11,12 +11,12 @@ export default function DateComponent({question, updateValue}:
         default_date = question.default?.toString()
     }
     return(
-        <input id={question.prompt} 
+        <input id={question.id} 
                name={question.prompt} 
                required={question.mandatory} 
                defaultValue={default_date}
                type='date'
                className={input_style + "w-32"}
-               onChange={(e) => updateValue(e)}/>
+               onChange={(e) => update_value(e)}/>
     )
 }

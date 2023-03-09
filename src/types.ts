@@ -17,11 +17,18 @@ type Question = {
     mandatory?: boolean
     options?: Array<string> | string
     default?: string | number
+    depends_on?: {
+        id: string
+        value: string
+    }
 }
 
 type Study = {
     name: string,
     questions: Array<Question>
+    options?: {
+        hidden_question_placeholder?: string
+    },
 }
 
 export type {Dict, DialogProps, QuestionChangeEvent, Study, Question}

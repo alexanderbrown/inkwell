@@ -19,42 +19,59 @@ interface StudyComponentProps {
 
 interface QuestionComponentProps {
     question: Question
-    update_form_state: (e: QuestionChangeEvent) => void
-    register_invalid: (prompt: string) => void
-    deregister_invalid: (prompt: string) => void
+    formState: Dict
+    setFormState: ((callback: (prev_state: Dict) => Dict) => void)
+    registerInvalid: (prompt: string) => void
+    deregisterInvalid: (prompt: string) => void
 }
 
-function Question({question, update_form_state, register_invalid, deregister_invalid}: QuestionComponentProps) {
+function Question({question, formState, setFormState, registerInvalid, deregisterInvalid}: QuestionComponentProps) {
 
-    const [value, setValue] = useState('')
+    const [value, setLocalValue] = useState('')
 
+    // How to update state
+    function updateInputValue(e: QuestionChangeEvent) {
+        setLocalValue(e.target.value); 
+        setFormState((prev)=>{
+            return {...prev, [e.target.id]: e.target.value}
+        })
+    }
+
+    // Validation logic
     const fails_validation = "mandatory" in question && question.mandatory && value===''
     useEffect(() => {
         if (fails_validation){
-            register_invalid(question.prompt)
+            registerInvalid(question.prompt)
         } else {
-            deregister_invalid(question.prompt)
+            deregisterInvalid(question.prompt)
         }
     }, [fails_validation])
 
-    function updateInputValue(e: QuestionChangeEvent) {
-        setValue(e.target.value); 
-        update_form_state(e)
+    // Set Visibility and remove from form state if invisible; add back in if visible
+    let element_visible: boolean = true
+    if (question.depends_on) {
+        element_visible = formState[question.depends_on.id] === question.depends_on.value
     }
 
+    // Choose a control
     let InputTagOptions = {
-        "string":       <StringInput question={question} updateValue={updateInputValue} />, 
-        "text":         <TextInput question={question} updateValue={updateInputValue} />,
-        "number":       <NumberInput question={question} updateValue={updateInputValue} step={1}/>,
-        "temperature":  <NumberInput question={question} updateValue={updateInputValue} step={0.1}/>,
-        "date":         <DateInput question={question} updateValue={updateInputValue} />, 
-        "select":       <SelectInput question={question} updateValue={updateInputValue}/>
+        "string":       <StringInput question={question} update_value={updateInputValue} />, 
+        "text":         <TextInput question={question} update_value={updateInputValue} />,
+        "number":       <NumberInput question={question} update_value={updateInputValue} step={1}/>,
+        "temperature":  <NumberInput question={question} update_value={updateInputValue} step={0.1}/>,
+        "date":         <DateInput question={question} update_value={updateInputValue} />, 
+        "select":       <SelectInput question={question} update_value={updateInputValue}/>
     }
+
+    // Render!
+    let parent_div_classes = element_visible? 'flex ' : 'hidden '
+    parent_div_classes += (question.depends_on? 'ml-8 mr-4 ': 'mx-4 ')
+    parent_div_classes += 'border-2 border-slate-300 rounded overflow-hidden bg-slate-100  text-slate-700 '
+    parent_div_classes += 'focus-within:bg-slate-700 focus-within:text-slate-100 focus-within:rounded-lg'
 
     return (
         <div key={question.prompt} 
-             className="flex mx-4 border-2 border-slate-300 rounded overflow-hidden bg-slate-100  text-slate-700
-                        focus-within:bg-slate-700 focus-within:text-slate-100 focus-within:rounded-lg">
+             className={parent_div_classes}>
             <div className="w-60 flex-none">
                 <label htmlFor={question.prompt}
                     className="p-2 text-right w-100% float-right"> 
@@ -75,19 +92,8 @@ export default function Study(props: StudyComponentProps) {
     let [showResetDialog, setResetDialogVisibility] = useState(false)
     let [showInvalidDialog, setInvalidDialogVisibility] = useState(false)
     let [showForm, setFormVisbility] = useState(true)
-    let [responses, changeResponses] = useState<Dict>(Object.fromEntries(props.study.questions.map(question => [question.prompt, ''])))
+    let [responses, setResponses] = useState<Dict>(Object.fromEntries(props.study.questions.map(question => [question.id, ''])))
     let [invalidResponses, setInvalidResponses] = useState<Array<string>>([])
-
-    function updateResponses(e: QuestionChangeEvent) {
-        let value: string
-        if ("checked" in e.target && e.target.type==='checkbox') {
-            value = e.target.checked.toString()
-        } else {
-            value = e.target.value
-        }
-
-        changeResponses({...responses, [e.target.name]: value})
-    }
 
     function registerInvalid(prompt: string) {
         setInvalidResponses(prev => {
@@ -118,6 +124,19 @@ export default function Study(props: StudyComponentProps) {
         }
     }
 
+    let responses_formatted = responses
+    props.study.questions
+        .filter(question => question.depends_on)
+        .forEach(question => {
+            const parent_id = question.depends_on?.id || ''
+            if (responses_formatted[parent_id] !== question.depends_on?.value){
+                responses_formatted[question.id] = props.study.options?.hidden_question_placeholder || ''
+            }
+        })
+    responses_formatted = Object.fromEntries(Object.entries(responses_formatted).map(([k,v])=> {
+        return [props.study.questions.filter(question => question.id===k)[0].prompt, v]}))
+
+
     return (
     <>
         <InvalidEntriesDialog isOpen={showInvalidDialog} setIsOpen={setInvalidDialogVisibility} props={invalidResponses} />
@@ -127,15 +146,16 @@ export default function Study(props: StudyComponentProps) {
               id='study-input-form'>
             
             {props.study.questions.map((question) => (
-                <Question question={question} key={question.id} 
-                          update_form_state={updateResponses}
-                          register_invalid={registerInvalid}
-                          deregister_invalid={deregisterInvalid}/>
+                <Question question={question} key={question.id}
+                          formState={responses} 
+                          setFormState={setResponses}
+                          registerInvalid={registerInvalid}
+                          deregisterInvalid={deregisterInvalid}/>
             ))}
             <FormButtons validateForm={validateForm} setResetDialogVisibility={setResetDialogVisibility} />
             
         </form>
-        <ResponsesReview responses={responses} showUnderlyingData={setFormVisbility} visible={!showForm}/>
+        <ResponsesReview responses={responses_formatted} showUnderlyingData={setFormVisbility} visible={!showForm}/>
     </>
     )
   }

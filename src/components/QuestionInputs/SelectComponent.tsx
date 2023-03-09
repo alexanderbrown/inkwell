@@ -4,8 +4,8 @@ import input_style from "./style";
 import listOptions from "@/resources/list-options";
 import assert from "assert";
 
-export default function Select({question, updateValue}: 
-                              {question: Question, updateValue: (e: QuestionChangeEvent) => void}){
+export default function Select({question, update_value}: 
+                              {question: Question, update_value: (e: QuestionChangeEvent) => void}){
     
     let options: Array<string> | undefined
     if (typeof question.options === 'string'){
@@ -20,12 +20,12 @@ export default function Select({question, updateValue}:
     let defaultValue: string = question.default?.toString() || ""
 
     return(
-        <select id={question.prompt} 
+        <select id={question.id} 
                 name={question.prompt} 
                 required={question.mandatory}
                 defaultValue={defaultValue} 
                 className={input_style + "w-fit"}
-                onChange={(e) => updateValue(e)}>
+                onChange={(e) => update_value(e)}>
                     <option value=""></option>
                     {options?.map(o => <option value={o} key={o}> {o} </option>)}
                 </select>
