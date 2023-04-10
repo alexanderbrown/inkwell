@@ -1,7 +1,7 @@
-import { Dict, Question, QuestionChangeEvent } from "@/types";
-import input_style from "./style";
+import { Question, QuestionChangeEvent } from "@/types";
+import input_style from "@/styles/inputComponent";
 
-export default function Text({question, update_value}: 
+export default function TextInput({question, update_value}: 
                               {question: Question, 
                                update_value: (e: QuestionChangeEvent) => void}){
     return(

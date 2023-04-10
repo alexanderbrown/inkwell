@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 
 import { Dict, Question, QuestionChangeEvent } from "@/types"
-import DateInput from '@/components/QuestionInputs/DateComponent'
-import NumberInput from '@/components/QuestionInputs/NumberComponent'
-import StringInput from '@/components/QuestionInputs/StringComponent'
-import TextInput from '@/components/QuestionInputs/TextComponent'
-import SelectInput from '@/components/QuestionInputs/SelectComponent'
+import DateInput from '@/components/inputs/DateInput'
+import NumberInput from '@/components/inputs/NumberInput'
+import StringInput from '@/components/inputs/StringInput'
+import TextInput from '@/components/inputs/TextInput'
+import SelectInput from '@/components/inputs/SelectInput'
 
 interface QuestionComponentProps {
     question: Question
@@ -15,7 +15,7 @@ interface QuestionComponentProps {
     deregisterInvalid: (prompt: string) => void
 }
 
-export default function QuestionComponent({question, formState, setFormState, registerInvalid, deregisterInvalid}: QuestionComponentProps) {
+export default function QuestionComponent({question, formState, setFormState, registerInvalid, deregisterInvalid}: QuestionComponentProps): JSX.Element {
 
     const [value, setLocalValue] = useState('')
 
@@ -44,7 +44,7 @@ export default function QuestionComponent({question, formState, setFormState, re
     }
 
     // Choose a control
-    let InputTagOptions = {
+    let InputElementOptions = {
         "string":       <StringInput question={question} update_value={updateInputValue} />, 
         "text":         <TextInput question={question} update_value={updateInputValue} />,
         "number":       <NumberInput question={question} update_value={updateInputValue} step={1}/>,
@@ -69,7 +69,7 @@ export default function QuestionComponent({question, formState, setFormState, re
                 </label>
             </div>
             <div className="flex-1 flex flex-col justify-center bg-slate-100 focus-within:bg-slate-200 peer">
-                {InputTagOptions[question.type]}
+                {InputElementOptions[question.type]}
             </div>
             {(fails_validation) ? <div className='flex flex-col justify-center align-middle pr-2 bg-slate-100 peer-focus-within:bg-slate-200'>
                 <p className='text-red-500 font-bold text-lg'>*</p>

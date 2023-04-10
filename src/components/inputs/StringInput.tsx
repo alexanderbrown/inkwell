@@ -1,7 +1,7 @@
 import { Question, QuestionChangeEvent } from "@/types";
-import input_style from "./style";
+import input_style from "@/styles/inputComponent";
 
-export default function String({question, update_value}: 
+export default function StringInput({question, update_value}: 
                               {question: Question, update_value: (e: QuestionChangeEvent) => void}){
     return(
         <input id={question.id} 

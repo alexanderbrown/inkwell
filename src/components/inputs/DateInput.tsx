@@ -1,7 +1,7 @@
 import { Question, QuestionChangeEvent } from "@/types";
-import input_style from "./style";
+import input_style from "@/styles/inputComponent";
 
-export default function DateComponent({question, update_value}: 
+export default function DateInput({question, update_value}: 
                              {question: Question, update_value: (e: QuestionChangeEvent) => void}){
 
     let default_date: string | undefined

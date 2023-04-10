@@ -1,10 +1,10 @@
 import { Question, QuestionChangeEvent } from "@/types";
-import input_style from "./style";
+import input_style from "@/styles/inputComponent";
 
-import listOptions from "@/resources/list-options";
+import listOptions from "@/assets/list-options";
 import assert from "assert";
 
-export default function Select({question, update_value}: 
+export default function SelectInput({question, update_value}: 
                               {question: Question, update_value: (e: QuestionChangeEvent) => void}){
     
     let options: Array<string> | undefined

@@ -1,3 +1,9 @@
+TODO: (P0) Pagination including dependent pages
+
+TODO: (P0) Paginated structure -> flat structure
+
+TODO: (P1) ID options - autogenerate with adjustable length, complexity; other options (e.g. trust)
+
 TODO: (P2) Handle errors in json elegantly!
 
 TODO: (P2) custom lists of values for select boxes

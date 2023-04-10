@@ -7,10 +7,10 @@ import { HiOutlineHome } from "react-icons/hi";
 
 import type { Dict, Study } from '@/types'
 
-import QuestionComponent from '@/components/Question';
-import ResetDialog from '@/components/ResetDialog'
+import QuestionComponent from '@/components/inputs/Question';
+import ResetDialog from '@/components/dialogs/ResetDialog'
 import ResponsesReview from '@/components/ResponsesReview'
-import InvalidEntriesDialog from '@/components/InvalidEntriesDialog'
+import InvalidEntriesDialog from '@/components/dialogs/InvalidEntriesDialog'
 import Link from 'next/link';
 
 
