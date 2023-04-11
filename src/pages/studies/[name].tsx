@@ -51,26 +51,13 @@ export default function StudyComponent({study}: {study: Study}) {
         }
     }
 
-    let responses_formatted = responses
-    study.questions
-        .filter(question => question.depends_on)
-        .forEach(question => {
-            const parent_id = question.depends_on?.id || ''
-            if (responses_formatted[parent_id] !== question.depends_on?.value){
-                responses_formatted[question.id] = study.options?.hidden_question_placeholder || ''
-            }
-        })
-    responses_formatted = Object.fromEntries(Object.entries(responses_formatted).map(([k,v])=> {
-        return [study.questions.filter(question => question.id===k)[0].prompt, v]}))
-
-
     return (
     <>
         <StudyTitle name={study.name} />
 
         <InvalidEntriesDialog isOpen={showInvalidDialog} setIsOpen={setInvalidDialogVisibility} props={invalidResponses} />
         <ResetDialog isOpen={showResetDialog} setIsOpen={setResetDialogVisibility} />
-        <ResponsesReview responses={responses_formatted} showUnderlyingData={setFormVisbility} visible={!showForm}/>
+        <ResponsesReview responses={responses} study={study} showUnderlyingData={setFormVisbility} visible={!showForm}/>
 
         <form className={`space-y-2 ${showForm? '' : 'hidden'}`} 
               id='study-input-form'>

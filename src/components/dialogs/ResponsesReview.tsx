@@ -1,19 +1,21 @@
-import { Dict } from "@/types"
+import { Dict, Study } from "@/types"
 import { useState } from "react"
 import { CSVLink } from "react-csv";
 import {BsArrowDownCircle, BsArrowRightCircle, BsArrowLeftShort} from "react-icons/bs"
 import ShortUniqueID from "short-unique-id"
-import Button from "../buttons/button";
+import Button from "@/components/buttons/button";
+import * as processResponses from '@/utils/processResponses'
 
 const uid = new ShortUniqueID({length:10, dictionary: 'alpha_upper'})
 
 interface ResponsesReviewProps {
     responses: Dict
+    study: Study
     showUnderlyingData: (x: boolean) => void
     visible: boolean
 }
 
-export default function ResponsesReview({responses, showUnderlyingData, visible}: ResponsesReviewProps) {
+export default function ResponsesReview({responses, study, showUnderlyingData, visible}: ResponsesReviewProps) {
     const [responsesVisible, setResponsesVisible] = useState(false)
     const [showResponsesButtonContent, setShowResponsesButtonContent] = useState(
         [<>Show Responses <BsArrowRightCircle size={24} className="inline"/></>, 
@@ -21,7 +23,10 @@ export default function ResponsesReview({responses, showUnderlyingData, visible}
     const [submissionID, _] = useState(uid());
     const [downloadClicked, setDownloadClicked] = useState(false)
 
-    const responsesExport = [Object.keys(responses), Object.values(responses).map(v=>v.toString().replaceAll('"', '""'))]
+    responses = processResponses.censorInvisibleOptions({responses, study})
+    responses = processResponses.replaceKeyWithPrompt({responses, study})
+    const responsesExport = processResponses.toCSVFormat(responses)
+
     return (
         <>
         {visible && 
