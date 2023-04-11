@@ -1,5 +1,6 @@
 import { DialogProps } from '@/types'
 import { Dialog } from '@headlessui/react'
+import Button from '@/components/buttons/button'
 
 export default function ResetDialog({isOpen, setIsOpen}: DialogProps) {
     return (
@@ -15,21 +16,19 @@ export default function ResetDialog({isOpen, setIsOpen}: DialogProps) {
             <br />
             This action cannot be undone.
             </p>
-            <button onClick={() => {
+            <Button color='red'
+                    onClick={() => {
                         let input_form = document.getElementById('study-input-form') as HTMLFormElement
                         input_form?.reset()
                         setIsOpen(false)
-                    }} 
-                    className="border-black border-solid border rounded font-bold py-2 px-4 ml-4
-                                bg-slate-100 text-slate-700 hover:bg-slate-300 hover:text-slate-900" >
+                    }}>
                 Reset Form
-            </button>
-            <button autoFocus 
-                    onClick={() => setIsOpen(false)}
-                    className="border-black border-solid border rounded font-bold py-2 px-4 ml-4 
-                            bg-slate-700 text-slate-100 hover:bg-slate-900 hover:text-slate-50">
+            </Button>
+            <Button color='blue'
+                    autoFocus={true} 
+                    onClick={() => setIsOpen(false)}>
                 Cancel
-            </button>
+            </Button>
         </Dialog.Panel>
         </div>
     </Dialog>

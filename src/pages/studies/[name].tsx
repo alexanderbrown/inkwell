@@ -9,9 +9,10 @@ import type { Dict, Study } from '@/types'
 
 import QuestionComponent from '@/components/inputs/Question';
 import ResetDialog from '@/components/dialogs/ResetDialog'
-import ResponsesReview from '@/components/ResponsesReview'
+import ResponsesReview from '@/components/dialogs/ResponsesReview'
 import InvalidEntriesDialog from '@/components/dialogs/InvalidEntriesDialog'
 import Link from 'next/link';
+import Button from '@/components/buttons/button';
 
 
 export default function StudyComponent({study}: {study: Study}) {
@@ -65,9 +66,12 @@ export default function StudyComponent({study}: {study: Study}) {
 
     return (
     <>
+        <StudyTitle name={study.name} />
+
         <InvalidEntriesDialog isOpen={showInvalidDialog} setIsOpen={setInvalidDialogVisibility} props={invalidResponses} />
         <ResetDialog isOpen={showResetDialog} setIsOpen={setResetDialogVisibility} />
-        <StudyTitle name={study.name} />
+        <ResponsesReview responses={responses_formatted} showUnderlyingData={setFormVisbility} visible={!showForm}/>
+
         <form className={`space-y-2 ${showForm? '' : 'hidden'}`} 
               id='study-input-form'>
             
@@ -78,10 +82,9 @@ export default function StudyComponent({study}: {study: Study}) {
                           registerInvalid={registerInvalid}
                           deregisterInvalid={deregisterInvalid}/>
             ))}
-            <FormButtons validateForm={validateForm} setResetDialogVisibility={setResetDialogVisibility} />
-            
+            <Button color='green' onClick={()=>validateForm()} > Submit </Button>
+            <Button color='red' onClick={()=>setResetDialogVisibility(true)}>Reset</Button>
         </form>
-        <ResponsesReview responses={responses_formatted} showUnderlyingData={setFormVisbility} visible={!showForm}/>
     </>
     )
   }
@@ -110,25 +113,7 @@ function StudyTitle ({name}: {name:string}) {
                     <HiOutlineHome size={30}/>
                 </Link>
                 <h1 className="text-2xl w-fit">{name}</h1>
-                <h1></h1>
+                <h1></h1> 
         </div>
     )
-}
-
-
-function FormButtons({validateForm, setResetDialogVisibility}: 
-                     {validateForm: () => void, setResetDialogVisibility: (v: boolean) => void}) {
-    return (<>
-        <button onClick={()=>validateForm()}
-                type='button'
-                className='bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 ml-4 border border-sky-700 rounded'>
-            Submit
-        </button>
-
-        <button onClick={()=>setResetDialogVisibility(true)}
-                type='button'
-                className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 ml-2 border border-red-700 rounded'>
-            Reset
-        </button>
-    </>)
 }
