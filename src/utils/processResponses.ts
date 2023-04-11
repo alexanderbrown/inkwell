@@ -1,4 +1,6 @@
-import { Dict, Study } from "@/types";
+import { Study } from "@/types";
+
+type Dict = NodeJS.Dict<string | number>
 
 /**
  * Censors responses to hidden questions.
@@ -35,5 +37,14 @@ export function replaceKeyWithPrompt({study, responses}: {study: Study, response
  * * Escapes all `"` by converting to `""`
  */
 export function toCSVFormat(responses: Dict){
-   return [Object.keys(responses), Object.values(responses).map(v=>v.toString().replaceAll('"', '""'))]
+    return [Object.keys(responses), Object.values(responses).map(v=>(v || '').toString().replaceAll('"', '""'))]
+}
+
+export function blankResponses(study: Study): Dict {
+    const responses = study.questions.map(question => {
+        const key = question.id
+        const value = question.default || undefined
+        return [key, value]
+    })
+    return Object.fromEntries(responses)
 }

@@ -1,4 +1,4 @@
-import { Dict, Study } from "@/types"
+import { Study } from "@/types"
 import { useState } from "react"
 import { CSVLink } from "react-csv";
 import {BsArrowDownCircle, BsArrowRightCircle, BsArrowLeftShort} from "react-icons/bs"
@@ -9,7 +9,7 @@ import * as processResponses from '@/utils/processResponses'
 const uid = new ShortUniqueID({length:10, dictionary: 'alpha_upper'})
 
 interface ResponsesReviewProps {
-    responses: Dict
+    responses: NodeJS.Dict<string | number>
     study: Study
     showUnderlyingData: (x: boolean) => void
     visible: boolean

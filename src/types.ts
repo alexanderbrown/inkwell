@@ -1,7 +1,5 @@
 import { ChangeEvent } from "react"
 
-type Dict = {[id:string]: string | number}
-
 interface DialogProps {
     isOpen: boolean
     setIsOpen: (a:boolean) => void
@@ -17,10 +15,12 @@ type Question = {
     mandatory?: boolean
     options?: Array<string> | string
     default?: string | number
-    depends_on?: {
-        id: string
-        value: string
-    }
+    depends_on?: Dependecy
+}
+
+type Dependecy = {
+    id: string
+    value: string
 }
 
 type Study = {
@@ -31,4 +31,4 @@ type Study = {
     },
 }
 
-export type {Dict, DialogProps, QuestionChangeEvent, Study, Question}
+export type {DialogProps, QuestionChangeEvent, Study, Question}
