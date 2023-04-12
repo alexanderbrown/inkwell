@@ -39,11 +39,17 @@ type Page = {
 
 
 type Study = {
-    name: string,
+    name: string
+    contact: Contact
     pages: Array<Page>
     options?: {
         hidden_question_placeholder?: string
     },
+}
+
+type Contact = {
+    name: string
+    email: string
 }
 
 export type {DialogProps, Page, QuestionInputProps, QuestionChangeEvent, Study, Question}

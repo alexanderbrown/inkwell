@@ -3,6 +3,10 @@ import { Study } from "@/types"
 const data: Study[] = [
     {
         name: "ANEC",
+        contact: {
+            name: "Alex Brown",
+            email: "alexander.brown5@nhs.net"
+        },
         options: {
             hidden_question_placeholder: "N/A"
         },
@@ -28,13 +32,16 @@ const data: Study[] = [
                 id: "f47cb089-2610-4ab4-90b2-b930b46f2f21",
                 questions: [
                     {id: "69b393ad-e6ae-47e8-b414-fc1654b7b034", prompt: "Anything Else", type: "text"},
-                    {id: "69b393ad-e6ae-47e8-b414-fc1654b7b035", prompt: "Anything Else", type: "text"},
                 ]
             }
         ]
     }, 
     {
         name: "ITES",
+        contact: {
+            name: "Alex Brown",
+            email: "alexander.brown5@nhs.net"
+        },
         options: {
             hidden_question_placeholder: "N/A"
         },

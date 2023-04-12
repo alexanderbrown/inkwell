@@ -66,11 +66,16 @@ export default function ResponsesReview({responses, study, showUnderlyingData, v
             </div>
             <div className="p-2 border-2 border-slate-300 rounded overflow-hidden bg-slate-100  text-slate-700">
                 <p>
-                    When you are ready to submit this case, please download your responses by clicking on the button below, and email this via a secure NHS email address to&nbsp; 
-                    <a href='mailto:alexander.brown5@nhs.net?subject=ANEC' target='_blank'
-                    className="text-sky-800"> 
-                    Alex Brown
-                    </a><br />
+                    When you are ready to submit this case:
+                    <ul className="list-disc list-inside list">
+                        <li>Download your responses by clicking on the button below</li>
+                        <li>Email the responses as an attachement via a secure NHS email address to 
+                            <a href={`mailto:${study.contact.email}?subject=${study.name}`} target='_blank'
+                               className="text-sky-800 font-semibold"> 
+                                {` ${study.contact.name}`}
+                            </a>
+                        </li>
+                    </ul>
                 </p>
                 <p className="py-2">
                     Your submission ID is <code className="bg-slate-900 text-slate-50 px-2 py-0.5 border-2 rounded-md">{submissionID}</code>. Please retain this for your records in case of further queries.
