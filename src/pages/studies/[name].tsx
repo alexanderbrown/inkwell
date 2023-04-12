@@ -61,7 +61,6 @@ export default function StudyPage() {
                     <Button color='red' onClick={()=>setResetDialogVisibility(true)}>Reset</Button>
                 </ButtonGroup>
             </div>
-            
         </>}
     </>
     )

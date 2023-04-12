@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { CSVLink } from "react-csv";
 import {BsArrowDownCircle, BsArrowRightCircle, BsArrowLeftShort} from "react-icons/bs"
+import { Tooltip } from 'react-tooltip'
 import ShortUniqueID from "short-unique-id"
 
 import { Study } from "@/types"
@@ -29,6 +30,11 @@ export default function ResponsesReview({responses, study, showUnderlyingData, v
     const responsesCensored = processResponses.censorInvisibleOptions({responses: responsesCopy, study})
     const responsesCensoredPrompt = processResponses.replaceKeyWithPrompt({responses: responsesCensored, study})
     const responsesExport = processResponses.toCSVFormat(responsesCensoredPrompt)
+
+    const anotherButtonTooltipProps = downloadClicked? {} : {
+        "data-tooltip-id": "tooltip",
+        "data-tooltip-content": "You can't start another report until you download the current report "
+    }
 
     return (
         <>
@@ -84,13 +90,17 @@ export default function ResponsesReview({responses, study, showUnderlyingData, v
                         Download Responses (as CSV)
                     </Button>
                 </CSVLink>
+                <span {...anotherButtonTooltipProps}>
                 <Button color='orange' 
-                        className={`${downloadClicked? '' : 'disabled'} disabled:cursor-not-allowed disabled:text-slate-400 disabled:border-slate-400`}
+                        className={`${downloadClicked? '' : 'disabled'} disabled:cursor-not-allowed disabled:text-slate-400 disabled:border-slate-400 p-0 `}
                         disabled={!downloadClicked}
                         onClick={()=>window.location.reload()}>
-                        Start Another Report
+                        
+                            Start Another Report
                 </Button>
+                </span>
             </ButtonGroup>
+            <Tooltip id="tooltip" />
         </div>
     }
     </>
