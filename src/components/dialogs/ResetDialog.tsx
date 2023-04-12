@@ -1,6 +1,7 @@
 import { DialogProps } from '@/types'
 import { Dialog } from '@headlessui/react'
-import Button from '@/components/buttons/button'
+import Button from '@/components/buttons/Button'
+import ButtonGroup from '../buttons/ButtonGroup'
 
 export default function ResetDialog({isOpen, setIsOpen}: DialogProps) {
     return (
@@ -16,19 +17,21 @@ export default function ResetDialog({isOpen, setIsOpen}: DialogProps) {
             <br />
             This action cannot be undone.
             </p>
-            <Button color='red'
-                    onClick={() => {
-                        let input_form = document.getElementById('study-input-form') as HTMLFormElement
-                        input_form?.reset()
-                        setIsOpen(false)
-                    }}>
-                Reset Form
-            </Button>
-            <Button color='blue'
-                    autoFocus={true} 
-                    onClick={() => setIsOpen(false)}>
-                Cancel
-            </Button>
+            <ButtonGroup justify='evenly'>
+                <Button color='red'
+                        onClick={() => {
+                            let input_form = document.getElementById('study-input-form') as HTMLFormElement
+                            input_form?.reset()
+                            setIsOpen(false)
+                        }}>
+                    Reset Form
+                </Button>
+                <Button color='blue'
+                        autoFocus={true} 
+                        onClick={() => setIsOpen(false)}>
+                    Cancel
+                </Button>
+            </ButtonGroup>
         </Dialog.Panel>
         </div>
     </Dialog>

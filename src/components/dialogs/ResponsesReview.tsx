@@ -1,9 +1,11 @@
-import { Study } from "@/types"
 import { useState } from "react"
 import { CSVLink } from "react-csv";
 import {BsArrowDownCircle, BsArrowRightCircle, BsArrowLeftShort} from "react-icons/bs"
 import ShortUniqueID from "short-unique-id"
-import Button from "@/components/buttons/button";
+
+import { Study } from "@/types"
+import Button from "@/components/buttons/Button";
+import ButtonGroup from "@/components/buttons/ButtonGroup";
 import * as processResponses from '@/utils/processResponses'
 
 const uid = new ShortUniqueID({length:10, dictionary: 'alpha_upper'})
@@ -23,16 +25,17 @@ export default function ResponsesReview({responses, study, showUnderlyingData, v
     const [submissionID, _] = useState(uid());
     const [downloadClicked, setDownloadClicked] = useState(false)
 
-    responses = processResponses.censorInvisibleOptions({responses, study})
-    responses = processResponses.replaceKeyWithPrompt({responses, study})
-    const responsesExport = processResponses.toCSVFormat(responses)
+    const responsesCopy = {...responses} //Shallow copy is enough as all the fields are primitiveœ
+    const responsesCensored = processResponses.censorInvisibleOptions({responses: responsesCopy, study})
+    const responsesCensoredPrompt = processResponses.replaceKeyWithPrompt({responses: responsesCensored, study})
+    const responsesExport = processResponses.toCSVFormat(responsesCensoredPrompt)
 
     return (
         <>
         {visible && 
-        <div className="space-y-2">
+        <div className="space-y-2 px-4">
             <div key='text' 
-                className="mx-4 p-2 border-2 border-slate-300 rounded overflow-hidden bg-slate-100  text-slate-700">
+                className="p-2 border-2 border-slate-300 rounded overflow-hidden bg-slate-100  text-slate-700">
                 <p>
                     Many thanks for taking the time to respond to this study. You may review your answers below.<br />
                     If there are any errors, you may go back using the button at the bottom of the page to correct them. Do not use the browser back button.
@@ -40,7 +43,7 @@ export default function ResponsesReview({responses, study, showUnderlyingData, v
             </div>
             
             <div key='responses'
-                className="mx-4 p-2 border-2 border-slate-300 rounded overflow-hidden bg-slate-100  text-slate-700">
+                className="p-2 border-2 border-slate-300 rounded overflow-hidden bg-slate-100  text-slate-700">
                 <Button color='blue'
                         className="text-sm" 
                         onClick={e=>{
@@ -51,11 +54,11 @@ export default function ResponsesReview({responses, study, showUnderlyingData, v
                 </Button>
                 { responsesVisible &&
                     <ul className="mt-2">
-                        {Object.entries(responses).map(([k, v]) => <li key={k}>{k}: {v}</li>)}
+                        {responsesCensoredPrompt.map(([k, v]) => <li key={k}>{k}: {v}</li>)}
                     </ul>
                 }
             </div>
-            <div className="mx-4 p-2 border-2 border-slate-300 rounded overflow-hidden bg-slate-100  text-slate-700">
+            <div className="p-2 border-2 border-slate-300 rounded overflow-hidden bg-slate-100  text-slate-700">
                 <p>
                     When you are ready to submit this case, please download your responses by clicking on the button below, and email this via a secure NHS email address to&nbsp; 
                     <a href='mailto:alexander.brown5@nhs.net?subject=ANEC' target='_blank'
@@ -71,22 +74,23 @@ export default function ResponsesReview({responses, study, showUnderlyingData, v
                     This method ensures that no data is stored on any non-NHS servers and patient data is kept secure.
                 </p>
             </div>
-            <Button color='slate' onClick={()=>showUnderlyingData(true)}>
-                <BsArrowLeftShort size={24} className="inline"/>
-                Go Back  
-            </Button>
-            <CSVLink data={responsesExport} filename={submissionID} className="focus:outline-none">
-                <Button color='green' onClick={()=>setDownloadClicked(true)}>
-                    Download Responses (as CSV)
+            <ButtonGroup spacing="2">
+                <Button color='slate' onClick={()=>showUnderlyingData(true)}>
+                    <BsArrowLeftShort size={24} className="inline"/>
+                    Go Back  
                 </Button>
-            </CSVLink>
-            
-            <Button color='green' 
-                    className={`${downloadClicked? '' : 'disabled'} disabled:cursor-not-allowed disabled:text-slate-400 disabled:border-slate-400`}
-                    disabled={!downloadClicked}
-                    onClick={()=>window.location.reload()}>
-                    Start Another Report
-            </Button>
+                <CSVLink data={responsesExport} filename={submissionID} className="focus:outline-none">
+                    <Button color='green' onClick={()=>setDownloadClicked(true)}>
+                        Download Responses (as CSV)
+                    </Button>
+                </CSVLink>
+                <Button color='orange' 
+                        className={`${downloadClicked? '' : 'disabled'} disabled:cursor-not-allowed disabled:text-slate-400 disabled:border-slate-400`}
+                        disabled={!downloadClicked}
+                        onClick={()=>window.location.reload()}>
+                        Start Another Report
+                </Button>
+            </ButtonGroup>
         </div>
     }
     </>

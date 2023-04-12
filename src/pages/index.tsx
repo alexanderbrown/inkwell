@@ -28,7 +28,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={inter.className}>
-        <div className='flex flex-col items-center bg-slate-100 h-screen'>
+        <div className='flex flex-col items-center bg-slate-50 h-screen'>
           <div className='flex items-baseline pt-4 pb-20 '>
             <Image src='/quill.png' className='w-20 inline' alt='Inkwell logo' width={240} height={240}/>
             <h1 className='text-5xl text-slate-600 inline '>Inkwell</h1>

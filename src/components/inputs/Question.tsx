@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
 
-import { Dict, Question, QuestionChangeEvent } from "@/types"
+import { Question, QuestionChangeEvent } from "@/types"
 import DateInput from '@/components/inputs/DateInput'
 import NumberInput from '@/components/inputs/NumberInput'
 import StringInput from '@/components/inputs/StringInput'
 import TextInput from '@/components/inputs/TextInput'
 import SelectInput from '@/components/inputs/SelectInput'
+
+type Dict = NodeJS.Dict<number | string>
 
 interface QuestionComponentProps {
     question: Question
@@ -16,8 +18,7 @@ interface QuestionComponentProps {
 }
 
 export default function QuestionComponent({question, formState, setFormState, registerInvalid, deregisterInvalid}: QuestionComponentProps): JSX.Element {
-
-    const [value, setLocalValue] = useState('')
+    const [value, setLocalValue] = useState(formState[question.id])
 
     // How to update state
     function updateInputValue(e: QuestionChangeEvent) {
@@ -28,7 +29,7 @@ export default function QuestionComponent({question, formState, setFormState, re
     }
 
     // Validation logic
-    const fails_validation = "mandatory" in question && question.mandatory && value===''
+    const fails_validation = "mandatory" in question && question.mandatory && !value
     useEffect(() => {
         if (fails_validation){
             registerInvalid(question.prompt)
@@ -37,7 +38,7 @@ export default function QuestionComponent({question, formState, setFormState, re
         }
     }, [fails_validation, deregisterInvalid, registerInvalid, question.prompt])
 
-    // Set Visibility and remove from form state if invisible; add back in if visible
+    // Hide component if branching condition not met
     let element_visible: boolean = true
     if (question.depends_on) {
         element_visible = formState[question.depends_on.id] === question.depends_on.value
@@ -45,17 +46,17 @@ export default function QuestionComponent({question, formState, setFormState, re
 
     // Choose a control
     let InputElementOptions = {
-        "string":       <StringInput question={question} update_value={updateInputValue} />, 
-        "text":         <TextInput question={question} update_value={updateInputValue} />,
-        "number":       <NumberInput question={question} update_value={updateInputValue} step={1}/>,
-        "temperature":  <NumberInput question={question} update_value={updateInputValue} step={0.1}/>,
-        "date":         <DateInput question={question} update_value={updateInputValue} />, 
-        "select":       <SelectInput question={question} update_value={updateInputValue}/>
+        "string":       <StringInput question={question} update_value={updateInputValue} current_value={value}/>, 
+        "text":         <TextInput question={question} update_value={updateInputValue} current_value={value}/>,
+        "number":       <NumberInput question={question} update_value={updateInputValue} step={1} current_value={value}/>,
+        "temperature":  <NumberInput question={question} update_value={updateInputValue} step={0.1} current_value={value}/>,
+        "date":         <DateInput question={question} update_value={updateInputValue} current_value={value}/>, 
+        "select":       <SelectInput question={question} update_value={updateInputValue} current_value={value}/>
     }
 
     // Render!
     let parent_div_classes = element_visible? 'flex ' : 'hidden '
-    parent_div_classes += (question.depends_on? 'ml-8 mr-4 ': 'mx-4 ')
+    parent_div_classes += (question.depends_on? 'ml-4 ': '')
     parent_div_classes += 'border-2 border-slate-300 rounded overflow-hidden bg-slate-100  text-slate-700 '
     parent_div_classes += 'focus-within:bg-slate-700 focus-within:text-slate-100 focus-within:rounded-lg'
 
