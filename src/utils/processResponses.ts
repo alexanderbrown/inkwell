@@ -57,7 +57,7 @@ export function toCSVFormat(responses: Array<Array<string | number | undefined>>
  * Returns the default value for a question 
  * This will be a blank string if not defined, the specified default, or a special value
  */
-function defaultValue(question: Question): string | number | undefined {
+function defaultValue(question: Question): string | number {
 
     if (question.type==='date'){
         if (question.default==='today'){
@@ -65,10 +65,10 @@ function defaultValue(question: Question): string | number | undefined {
         } else if (question.default) {
             return question.default.toString()
         } else {
-            return undefined
+            return ''
         }
     } else {
-        return question.default || undefined
+        return question.default ?? ''
     }
 }
 
