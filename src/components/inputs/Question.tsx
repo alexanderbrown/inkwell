@@ -63,18 +63,18 @@ export default function QuestionComponent({question, formState, setFormState, re
     return (
         <div key={question.prompt} 
              className={parent_div_classes}>
-            <div className="w-60 flex-none">
+            <div className="w-60 flex justify-end">
                 <label htmlFor={question.prompt}
-                    className="p-2 text-right w-100% float-right"> 
+                    className="p-2"> 
                     {question.prompt}
                 </label>
+                {fails_validation && <div className='flex flex-col justify-center align-middle pr-2'>
+                    <p className='text-red-500 font-bold text-xl'>*</p>
+                </div>}
             </div>
             <div className="flex-1 flex flex-col justify-center bg-slate-100 focus-within:bg-slate-200 peer">
                 {InputElementOptions[question.type]}
             </div>
-            {(fails_validation) ? <div className='flex flex-col justify-center align-middle pr-2 bg-slate-100 peer-focus-within:bg-slate-200'>
-                <p className='text-red-500 font-bold text-lg'>*</p>
-            </div> : ''}
         </div> 
     )
 }
