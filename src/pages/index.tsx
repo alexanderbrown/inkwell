@@ -44,7 +44,7 @@ export default function Home() {
             <ul className="list-disc list-inside">
               {studies.map((study) => { return (
                 <li className="text-sky-700" key={study}>
-                  <Link href={`studies/${study}`} >{study}</Link>
+                  <Link href={`studies/${study}`} target='_blank'>{study}</Link>
                 </li>)
               })}
             </ul>
