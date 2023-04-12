@@ -33,7 +33,7 @@ export default function StudyPage() {
             setStudy(study)
             setResponses(blankResponses(study)) //Need this to ensure all the questions appear in the CSV (even if not answered)
         }
-        getData(studyName!) 
+        if (studyName) getData(studyName!) 
     }, [studyName])
 
     // Validation
