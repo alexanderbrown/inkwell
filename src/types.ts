@@ -44,6 +44,10 @@ type Study = {
     pages: Array<Page>
     options?: {
         hidden_question_placeholder?: string
+        responseIDFormat?: {
+            length: number,
+            dictionary: 'number' | 'alpha' | 'alpha_lower' | 'alpha_upper' | 'alphanum' | 'alphanum_lower' | 'alphanum_upper' | 'hex'
+        }
     },
 }
 

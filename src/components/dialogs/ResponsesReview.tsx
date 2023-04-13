@@ -9,8 +9,6 @@ import Button from "@/components/buttons/Button";
 import ButtonGroup from "@/components/buttons/ButtonGroup";
 import * as processResponses from '@/utils/processResponses'
 
-const uid = new ShortUniqueID({length:10, dictionary: 'alpha_upper'})
-
 interface ResponsesReviewProps {
     responses: NodeJS.Dict<string | number>
     study: Study
@@ -19,11 +17,14 @@ interface ResponsesReviewProps {
 }
 
 export default function ResponsesReview({responses, study, showUnderlyingData, visible}: ResponsesReviewProps) {
+    
+    const uidGenerator = new ShortUniqueID(study.options?.responseIDFormat ?? {length:10, dictionary: 'alpha_upper'})
+
     const [responsesVisible, setResponsesVisible] = useState(false)
     const [showResponsesButtonContent, setShowResponsesButtonContent] = useState(
         [<>Show Responses <BsArrowRightCircle size={24} className="inline"/></>, 
          <>Hide Responses <BsArrowDownCircle size={24} className="inline"/></>, ])
-    const [submissionID, _] = useState(uid());
+    const [submissionID, _] = useState(uidGenerator());
     const [downloadClicked, setDownloadClicked] = useState(false)
 
     const responsesCopy = {...responses} //Shallow copy is enough as all the fields are primitiveœ
