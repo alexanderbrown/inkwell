@@ -25,8 +25,8 @@ type Question = {
     id: string
     type: "string" | "text" | "number" |  "temperature" | "date" | "select"
     mandatory?: boolean
-    options?: Array<string> | string
     default?: string | number
+    options?: Array<string> | string
     depends_on?: Dependecy
 }
 
