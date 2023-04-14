@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 import * as types from '@/types'
 
-import Button from '@/components/buttons/Button';
+import Button from '@/components/buttons/ButtonComponent';
 import InvalidEntriesDialog from '@/components/dialogs/InvalidEntriesDialog'
 import ResetDialog from '@/components/dialogs/ResetDialog'
 import ResponsesReview from '@/components/dialogs/ResponsesReview'

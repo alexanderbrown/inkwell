@@ -1,6 +1,6 @@
 import { DialogProps } from '@/types'
 import { Dialog } from '@headlessui/react'
-import Button from '@/components/buttons/Button'
+import Button from '@/components/buttons/ButtonComponent'
 import ButtonGroup from '../buttons/ButtonGroup'
 
 export default function ResetDialog({isOpen, setIsOpen}: DialogProps) {
