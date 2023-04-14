@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useState } from 'react';
 
 import * as types from '@/types'
 import Page from '@/components/elements/Page';
-import Button from '@/components/buttons/ButtonComponent';
+import Button from '@/components/buttons/Button';
 import ButtonGroup from '../buttons/ButtonGroup';
 
 

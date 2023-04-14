@@ -1,6 +1,6 @@
 import { Dialog } from '@headlessui/react'
 import { DialogProps } from '@/types'
-import Button from '@/components/buttons/ButtonComponent'
+import Button from '@/components/buttons/Button'
 
 export default function InvalidEntriesDialog({isOpen, setIsOpen, props}: DialogProps) {
     return (

@@ -5,7 +5,7 @@ import { Tooltip } from 'react-tooltip'
 import ShortUniqueID from "short-unique-id"
 
 import { Study } from "@/types"
-import Button from "@/components/buttons/ButtonComponent";
+import Button from "@/components/buttons/Button";
 import ButtonGroup from "@/components/buttons/ButtonGroup";
 import * as processResponses from '@/utils/processResponses'
 
