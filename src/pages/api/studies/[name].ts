@@ -5,7 +5,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 import data from '@/data/sampleData'
 
-export default async (req:NextApiRequest, res:NextApiResponse) => {
+export default async function handler (req:NextApiRequest, res:NextApiResponse) {
     const {name} = req.query 
     if (process.env.MODE==='dev'){
         const results = data.filter(study => study.name.toLowerCase()===(name as string).toLowerCase())
