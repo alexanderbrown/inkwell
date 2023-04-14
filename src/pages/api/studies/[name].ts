@@ -16,5 +16,7 @@ export default async function handler (req:NextApiRequest, res:NextApiResponse) 
         } else if (results.length > 1) {
             return res.status(500).send(`Multiple studies found with name ${name}`)
         }
+    } else {
+        return res.status(404).send('Unable to obtain data. Have you enabled dev mode?')
     }
 }
