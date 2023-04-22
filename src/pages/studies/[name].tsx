@@ -52,7 +52,12 @@ export default function StudyPage() {
 
         {study && Object.keys(responses) && <>
             <InvalidEntriesDialog isOpen={showInvalidDialog} setIsOpen={setInvalidDialogVisibility} props={invalidResponses} />
-            <ResetDialog isOpen={showResetDialog} setIsOpen={setResetDialogVisibility} />
+            <ResetDialog isOpen={showResetDialog} setIsOpen={setResetDialogVisibility} resetCallback={() => {
+                console.log('Reset Callback Fired')
+                console.log(blankResponses(study))
+                console.log(responses)
+                setResponses(blankResponses(study))
+                }}/>
             <ResponsesReview responses={responses} study={study} showUnderlyingData={setFormVisbility} visible={!showForm}/>
             <div className={showForm? '' : 'hidden'}>
                 <PageCarousel study={study} responses={responses} setResponses={setResponses} setInvalidResponses={setInvalidResponses} />

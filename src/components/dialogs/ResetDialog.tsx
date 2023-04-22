@@ -3,7 +3,11 @@ import { Dialog } from '@headlessui/react'
 import Button from '@/components/buttons/Button'
 import ButtonGroup from '../buttons/ButtonGroup'
 
-export default function ResetDialog({isOpen, setIsOpen}: DialogProps) {
+interface ResetProps extends DialogProps {
+    resetCallback: () => void
+}
+
+export default function ResetDialog({isOpen, setIsOpen, resetCallback}: ResetProps) {
     return (
     <Dialog key='reset-dialog' open={isOpen} onClose={() => setIsOpen(false)}>
         <div className="fixed inset-0 bg-black opacity-30" />
@@ -20,8 +24,7 @@ export default function ResetDialog({isOpen, setIsOpen}: DialogProps) {
             <ButtonGroup justify='evenly'>
                 <Button color='red'
                         onClick={() => {
-                            let input_form = document.getElementById('study-input-form') as HTMLFormElement
-                            input_form?.reset()
+                            resetCallback()
                             setIsOpen(false)
                         }}>
                     Reset Form

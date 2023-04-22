@@ -18,11 +18,10 @@ interface QuestionComponentProps {
 }
 
 export default function QuestionComponent({question, formState, setFormState, registerInvalid, deregisterInvalid}: QuestionComponentProps): JSX.Element {
-    const [value, setLocalValue] = useState(formState[question.id])
-
+    const value = formState[question.id]
+    
     // How to update state
     function updateInputValue(e: QuestionChangeEvent) {
-        setLocalValue(e.target.value); 
         setFormState((prev)=>{
             return {...prev, [e.target.id]: e.target.value}
         })

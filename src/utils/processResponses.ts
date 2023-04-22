@@ -73,7 +73,8 @@ function defaultValue(question: Question): string | number {
 }
 
 
-export function blankResponses(study: Study): Dict {
+export function blankResponses(study: Study | undefined): Dict {
+    if (!study) return {}
     const responses = flatQuestions(study).map(question => {
         const key = question.id
         const value = defaultValue(question)
