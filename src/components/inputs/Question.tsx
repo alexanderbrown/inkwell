@@ -40,7 +40,12 @@ export default function QuestionComponent({question, formState, setFormState, re
     // Hide component if branching condition not met
     let element_visible: boolean = true
     if (question.depends_on) {
-        element_visible = formState[question.depends_on.id] === question.depends_on.value
+        if (Array.isArray(question.depends_on.value)) {
+            element_visible = question.depends_on.value.includes((formState[question.depends_on.id] || '').toString())
+        } else {
+            element_visible = formState[question.depends_on.id] === question.depends_on.value
+        }
+        
     }
 
     // Choose a control
@@ -62,9 +67,9 @@ export default function QuestionComponent({question, formState, setFormState, re
     return (
         <div key={question.prompt} 
              className={parent_div_classes}>
-            <div className="w-60 flex justify-end">
+            <div className="w-96 flex justify-end">
                 <label htmlFor={question.prompt}
-                    className="p-2"> 
+                    className="p-2 whitespace-pre-wrap"> 
                     {question.prompt}
                 </label>
                 {fails_validation && <div className='flex flex-col justify-center align-middle pr-2'>

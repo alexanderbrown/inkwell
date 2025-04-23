@@ -16,7 +16,7 @@ type QuestionInputProps = {
 
 type Dependecy = {
     id: string
-    value: string
+    value: string | Array<string>
 }
 
 
