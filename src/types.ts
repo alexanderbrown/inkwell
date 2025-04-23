@@ -40,6 +40,7 @@ type Page = {
 
 type Study = {
     name: string
+    name_full?: string
     contact: Contact
     pages: Array<Page>
     options?: {

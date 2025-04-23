@@ -48,7 +48,7 @@ export default function StudyPage() {
     // Render
     return (
     <>
-        <StudyTitle name={study?.name || ''} /> 
+        <StudyTitle name={study?.name_full || study?.name || ''} /> 
 
         {study && Object.keys(responses) && <>
             <InvalidEntriesDialog isOpen={showInvalidDialog} setIsOpen={setInvalidDialogVisibility} props={invalidResponses} />
