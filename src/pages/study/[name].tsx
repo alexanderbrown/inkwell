@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useRouter } from "next/router";
 import PageCarousel from "~/components/PageCarousel";
 import { api } from "~/utils/api";
@@ -10,14 +11,19 @@ export default function StudyPage() {
         return ErrorPage(name);
     }
 
-    return (
-        <div className="flex flex-col justify-start min-h-screen bg-gradient-to-b from-indigo-50 to-white px-24">
+    return (<>
+        <Head>
+            <title>{study.name_full? `${study.name_full} (${study.name_short})` : study.name_short}</title>
+            <meta name="description" content="Study page" />
+            <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <main className="flex flex-col justify-start min-h-screen bg-gradient-to-b from-indigo-50 to-white px-24">
             <h1 className="text-2xl text-center py-4 font-bold text-secondary-foreground sm:text-[3rem]">
                 {study.name_full? `${study.name_full} (${study.name_short})` : study.name_short}
             </h1>
            <PageCarousel study={study} />
-        </div>
-    );
+        </main>
+    </>);
 }
 
 function ErrorPage(name: string) {
