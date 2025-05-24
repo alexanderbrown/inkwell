@@ -7,7 +7,7 @@ export default function Boolean({question, field}: QuestionInputComponentProps):
         throw new Error(`Boolean component received a question of type ${question.type}`);
     }
     return (
-        <Switch 
+        <Switch className='cursor-pointer'
         {...field}
         defaultChecked={question.default}
         onCheckedChange={field.onChange}
