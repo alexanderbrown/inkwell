@@ -2,10 +2,9 @@
 // TODO: Move the new question options in to a popover
 
 import Head from "next/head";
-import { useEffect, useState} from "react";
+import { useState} from "react";
+import { v4 as uuidv4 } from "uuid";
 
-
-import { api } from "~/utils/api";
 import type { Study } from "~/types";
 
 import PagesEditor from "~/components/editor/pages/PagesEditor";
@@ -102,7 +101,8 @@ export default function Editor() {
                                     name: "",
                                     email: ""
                                 },
-                                pages: []
+                                pages: [],
+                                id: uuidv4(),
                             });
                             setActivePageIndex(0);
                             setActiveQuestionIndex(0);
