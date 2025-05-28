@@ -27,6 +27,14 @@ export default function Temperature({question, field}: QuestionInputComponentPro
         fieldOnChange(temp_celsius);
     }, [temp, useFahrenheit, fieldOnChange]);
 
+    // Update the temp state when the fieldValue changes
+    // This is to ensure that the component reflects the value from the form state, e.g. when loading a saved response
+    useEffect(() => {
+        if ((fieldValue !== undefined) && (fieldValue !== temp)) {
+            setTemp(useFahrenheit ? toFahrenheit(fieldValue) : fieldValue);
+        } 
+    }, [fieldValue]);
+
     return (
         <div className="flex flex-row items-center gap-1">
         <Input

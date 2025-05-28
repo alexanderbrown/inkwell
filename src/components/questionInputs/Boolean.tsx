@@ -11,6 +11,7 @@ export default function Boolean({question, field}: QuestionInputComponentProps):
         {...field}
         defaultChecked={question.default}
         onCheckedChange={field.onChange}
+        checked={field.value === true ? true : false}
         />
     )
 }

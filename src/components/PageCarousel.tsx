@@ -8,13 +8,14 @@ import { Form } from '~/components/ui/form'
 import { Toaster } from "./ui/sonner";
 
 import type { Study } from "~/types";
-import downloadCSV from "~/utils/csv";
+import { downloadCSV, parseCSV } from "~/utils/csv";
 import { processResponses } from "~/utils/formUtils";
 
 import QuestionComponent from "./QuestionComponent";
 import ProgressIndicator from "./ProgressIndicator";
 import PagesNavigation from "./PagesNavigation";
 import ResetDialog from "./ResetConfirmation";
+import { Button } from "./ui/button";
 
 
 
@@ -54,13 +55,16 @@ export default function PageCarousel({study}: {study: Study}) {
         return requiredFieldValues[index] === undefined || requiredFieldValues[index] === ''
     })
         
-    const onSubmit = async (formData: Object, event?: BaseSyntheticEvent) => {
-        event && event.preventDefault();
-        if (step < totalSteps - 1) {
+    const onSubmit = async (formData: Object, event?: Partial<BaseSyntheticEvent>) => {
+        event?.preventDefault && event.preventDefault();
+        if ((step < totalSteps - 1) && (event?.type !== 'partial')) {
           setStep(step + 1)
         } else {
+
+          const status = event?.type === 'partial' ? 'partial' : 'complete';
+
           const prefix_fields = ['study_id', 'study_name_short', 'study_name_full', 'status']
-          const prefix_field_values = [study.id, study.name_short, study.name_full || '',  'complete']
+          const prefix_field_values = [study.id, study.name_short, study.name_full || '',  status]
           const processedResponses = processResponses(formData, study)
           const responseID = (processedResponses[study.responseID_field || '']?.response || uuidv4()) 
           downloadCSV({header: [...prefix_fields, ...Object.keys(processedResponses)],
@@ -70,16 +74,45 @@ export default function PageCarousel({study}: {study: Study}) {
 
                                 ],
                        filename: responseID + '.csv'})
-          setStep(0)    
+          event?.type !=='partial' && setStep(0)    
           toast.success(`CSV file generated for response ${responseID}`)
         }
       }
+
+    const onLoad = () => {
+        // Loads a previous response from disk
+        const fileInput = document.createElement('input');
+        fileInput.type = 'file';
+        fileInput.accept = '.csv';
+        fileInput.onchange = async (e) => {
+            const file = (e.target as HTMLInputElement).files?.[0];
+            if (!file) {
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const csvContent = event.target?.result as string;
+                const parsed = parseCSV(csvContent, study);
+                if ('error' in parsed) {
+                    toast.error(`Error loading CSV: ${parsed.error}`);
+                    return;
+                }       
+                console.log(parsed)         
+                form.reset(parsed);
+                setStep(0);
+                toast.success(`CSV file loaded successfully `)
+            };
+            reader.readAsText(file);
+        }
+        fileInput.click();
+    }
     
     const handleBack = () => {
         if (step > 0) {
           setStep(step - 1)
         }
     }
+
     return (
         <div className="space-y-2">
             <div className="flex items-center">
@@ -87,6 +120,15 @@ export default function PageCarousel({study}: {study: Study}) {
               <div className="flex-1">
                 <ProgressIndicator totalSteps={pages.length} currentStep={step} missingResponses={missingResponses} setStep={setStep} pagePrompts={pages.map(page => page.prompt)}/>
               </div>
+              <div className="flex flex-row gap-1">
+                <Button variant={"outline"} className='cursor-pointer' onClick={() => {onLoad()}}>
+                  Load
+                </Button>
+                <Button variant={"outline"} className='cursor-pointer' onClick={() => onSubmit(form.getValues(), {type: 'partial'})}>
+                  Save Progress
+                </Button>
+              </div>
+
             </div>
             <Card className="shadow-sm">
               <CardHeader>
