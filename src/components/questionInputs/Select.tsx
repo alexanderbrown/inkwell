@@ -11,7 +11,7 @@ export default function SelectComponent({question, field}: QuestionInputComponen
     const options = typeof question.options === "string" ? predefinedOptionLists[question.options] : question.options;
 
     return (
-        <Select onValueChange={field.onChange} defaultValue={question.default}>
+        <Select onValueChange={field.onChange} value={field.value}>
             <SelectTrigger className="w-[180px]">
                 <SelectValue placeholder="Select an option" />
             </SelectTrigger>

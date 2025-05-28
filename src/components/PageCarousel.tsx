@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState, type BaseSyntheticEvent } from "react";
 import { useForm, useWatch } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid';
 import { toast } from "sonner";
@@ -20,7 +20,20 @@ import ResetDialog from "./ResetConfirmation";
 
 export default function PageCarousel({study}: {study: Study}) {
     const [step, setStep] = useState(0);
+    const [refreshState, setRefreshState] = useState<'needs' | 'resetting' | 'ready'>('ready');
     const form = useForm()
+
+    useEffect(() => {
+        if (refreshState === 'needs') {
+          form.reset()
+          setStep(1)
+          setRefreshState('resetting')
+        } else if (refreshState === 'resetting') {
+          setStep(0)
+          setRefreshState('ready')
+        }
+      }, [refreshState, form])
+
 
     const pages = study.pages 
     const currentPage = pages[step];
@@ -41,15 +54,21 @@ export default function PageCarousel({study}: {study: Study}) {
         return requiredFieldValues[index] === undefined || requiredFieldValues[index] === ''
     })
         
-    const onSubmit = async (formData: Object) => {
+    const onSubmit = async (formData: Object, event?: BaseSyntheticEvent) => {
+        event && event.preventDefault();
         if (step < totalSteps - 1) {
           setStep(step + 1)
         } else {
+          const prefix_fields = ['study_id', 'study_name_short', 'study_name_full', 'status']
+          const prefix_field_values = [study.id, study.name_short, study.name_full || '',  'complete']
           const processedResponses = processResponses(formData, study)
           const responseID = (processedResponses[study.responseID_field || '']?.response || uuidv4()) 
-          downloadCSV({header: Object.keys(processedResponses),
-                       body: [Object.values(processedResponses).map((item) => item.prompt),
-                              Object.values(processedResponses).map((item) => item.response)],
+          downloadCSV({header: [...prefix_fields, ...Object.keys(processedResponses)],
+                       body: [
+                                [...prefix_fields, ...Object.values(processedResponses).map((item) => item.prompt)],
+                                [...prefix_field_values, ...Object.values(processedResponses).map((item) => item.response)]
+
+                                ],
                        filename: responseID + '.csv'})
           setStep(0)    
           toast.success(`CSV file generated for response ${responseID}`)
@@ -64,7 +83,7 @@ export default function PageCarousel({study}: {study: Study}) {
     return (
         <div className="space-y-2">
             <div className="flex items-center">
-              <ResetDialog onClick={() => {form.reset(); setStep(0)}}/>
+              <ResetDialog onClick={() => {setRefreshState('needs')}}/>
               <div className="flex-1">
                 <ProgressIndicator totalSteps={pages.length} currentStep={step} missingResponses={missingResponses} setStep={setStep} pagePrompts={pages.map(page => page.prompt)}/>
               </div>

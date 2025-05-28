@@ -102,6 +102,7 @@ type Study = {
     contact: Contact
     pages: Array<Page>
     responseID_field?: string
+    id: string
     options?: {
         hidden_question_placeholder?: string
     },

@@ -5,7 +5,7 @@ import { VscChevronDown, VscChevronUp } from "react-icons/vsc";
 import type { Study } from "~/types";
 
 import { Button } from "~/components/ui/button";
-import { Card, CardContent, CardDescription, CardTitle } from "~/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardTitle } from "~/components/ui/card";
 import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "~/components/ui/collapsible";
 import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
@@ -92,6 +92,9 @@ export default function StudyEditor({study, setStudy}: StudyEditorProps) {
                             }
                         )}/>
                     </CardContent>
+                    <CardFooter className="flex justify-end mt-4">
+                        <p className="text-sm text-secondary-foreground">Study ID: {study.id}</p>
+                    </CardFooter>
             </CollapsibleContent>
             </Collapsible>
         </Card>
