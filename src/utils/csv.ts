@@ -9,6 +9,16 @@ interface downloadCSVProps {
 
 export default function  downloadCSV({ header, body, filename }: downloadCSVProps) {
     // Convert the data array into a CSV string
+
+    // Escape quotes in the header and body
+    header = header.map(item => item.includes('"') ? item.replace(/"/g, '""') : item);
+    body = body.map(row => row.map(item => item.includes('"') ? item.replace(/"/g, '""') : item));
+
+    // Enclose all items with quotes. 
+    // This will ensure that commas and newlines within the data do not break the CSV format.
+    header = header.map(item => `"${item}"`);
+    body = body.map(row => row.map(item => `"${item}"`));
+
     const csvString = [
         header,
         ...body,

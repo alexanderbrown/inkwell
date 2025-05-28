@@ -171,7 +171,7 @@
           "type": "text",
           "depends_on": {
             "id": "3350e97e-ab8c-45a8-9340-ea5f4ac63902",
-            "value": "Other"
+            "value": ["Other", "Combined"]
           },
           "help_text": "Please enter further details"
         },
@@ -485,7 +485,7 @@
           "type": "text",
           "depends_on": {
             "id": "ce282f4b-7a03-4c96-8f04-7e6d03452f78",
-            "value": "Other"
+            "value": ["Other", "Combined"]
           }
         },
         {
@@ -818,11 +818,6 @@
         {
           "prompt": "Paired serum glucose",
           "id": "a1da22f6-26f2-4e48-b51c-bd42e3964198",
-          "type": "number"
-        },
-        {
-          "prompt": "Paired serum glucose",
-          "id": "8e383d9d-e67e-46e7-89f5-2002bedfc936",
           "type": "number"
         },
         {
