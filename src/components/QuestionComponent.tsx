@@ -1,11 +1,13 @@
 import { useWatch, type UseFormReturn } from "react-hook-form";
-import { IoIosGitBranch } from "react-icons/io";
+import { IoIosGitBranch, IoMdInformationCircleOutline } from "react-icons/io";
+import { LuAsterisk } from "react-icons/lu";
 
 
 import type { Page, Question } from "~/types";
 import { FormControl, FormField, FormItem, FormLabel } from "./ui/form";
 import QuestionInputComponent from "./questionInputs/QuestionInputComponent";
 import { cn } from "~/lib/utils";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip";
 
 interface QuestionComponentProps {
     question: Question;
@@ -51,7 +53,8 @@ export default function Question ({question, form, pages}: QuestionComponentProp
                     "grid grid-cols-[1fr_2fr] sm:grid-cols-[1fr_5fr] gap-4", 
                     question.depends_on && "pl-6" 
                 )}>
-                    <FormLabel>{question.prompt} {labelSuffix(question, thisQuestionResponse, pages)}</FormLabel>
+                    <div className="flex flex-row">
+                        <FormLabel className="flex-1">{question.prompt} </FormLabel>{labelSuffix(question, thisQuestionResponse, pages)}</div>
                     <FormControl>
                         <QuestionInputComponent question={question} field={field} />
                     </FormControl>
@@ -65,17 +68,45 @@ function labelSuffix(question: Question, thisQuestionResponse: string | undefine
     const isParent = pages.flatMap((page) => page.questions)
         .some((q) => q.depends_on && q.depends_on.id === question.id);
 
-    let label_suffix = <></>
-    if (question.mandatory) {
-        if (thisQuestionResponse === undefined || thisQuestionResponse === '') {
-            label_suffix = <p className="text-red-500 text-lg"> *</p>
-        } else {
-            label_suffix = <p className="text-lg"> *</p>
-        }
-    }
-    if (isParent) {
-        label_suffix = <> {label_suffix} <IoIosGitBranch className="text-lg text-primary rotate-90" size={20} /></>
-    }
+    return (
+        <TooltipProvider>
+        <div className="flex items-start gap-0">
+            {question.help_text &&
+             
+                <Tooltip>
+                    <TooltipTrigger asChild>
+                        <IoMdInformationCircleOutline className="text-lg text-primary w-6" size={16} />
+                    </TooltipTrigger>
+                    <TooltipContent>
+                        <p className="whitespace-pre-line">{question.help_text}</p>
+                    </TooltipContent>
+                </Tooltip>
 
-    return label_suffix
+            }
+            {question.mandatory===true && (
+                (thisQuestionResponse === undefined || thisQuestionResponse === '') ?
+                (<Tooltip>
+                    <TooltipTrigger asChild>
+                        <LuAsterisk className="text-red-500 text-lg" size={16}/>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                        <p className="whitespace-pre-line">This question is mandatory and has not been answered</p>
+                    </TooltipContent>
+                </Tooltip>
+            ) :
+                (<Tooltip>
+                    <TooltipTrigger asChild>
+                        <LuAsterisk className="text-lg" size={16}/>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                        <p className="whitespace-pre-line">This question is mandatory; answer is valid</p>
+                    </TooltipContent>
+                </Tooltip>
+            )
+            )}
+            {isParent && <IoIosGitBranch className="text-lg text-primary rotate-90" size={16} />}
+        </div>
+        </TooltipProvider>
+
+    )
 }

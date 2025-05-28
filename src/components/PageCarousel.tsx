@@ -66,7 +66,7 @@ export default function PageCarousel({study}: {study: Study}) {
             <div className="flex items-center">
               <ResetDialog onClick={() => {form.reset(); setStep(0)}}/>
               <div className="flex-1">
-                <ProgressIndicator totalSteps={pages.length} currentStep={step} missingResponses={missingResponses} setStep={setStep}/>
+                <ProgressIndicator totalSteps={pages.length} currentStep={step} missingResponses={missingResponses} setStep={setStep} pagePrompts={pages.map(page => page.prompt)}/>
               </div>
             </div>
             <Card className="shadow-sm">

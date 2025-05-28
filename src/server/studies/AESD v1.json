@@ -1,0 +1,1629 @@
+{
+  "name_short": "AESD",
+  "name_full": "Acute encephalopathy with biphasic seizures and restricted diffusion",
+  "contact": {
+    "name": "Dr Tom Rossor",
+    "email": "Thomas.Rossor@gstt.nhs.uk"
+  },
+  "pages": [
+    {
+      "prompt": "Inclusion Criteria: Essential",
+      "id": "40e224bd-4c89-492a-b749-80c7e082c6f2",
+      "questions": [
+        {
+          "prompt": "Patient aged 0-18",
+          "id": "ba960b51-e1a3-4495-b17c-0c5e0f77410d",
+          "type": "select",
+          "options": "yes-no-unknown",
+          "mandatory": true
+        },
+        {
+          "prompt": "Febrile illness preceding or concurrent to onset of neurologic symptoms",
+          "id": "61d3c1ea-11c2-43dc-bdf8-8d96382b3346",
+          "type": "select",
+          "options": "yes-no-unknown",
+          "mandatory": true
+        },
+        {
+          "prompt": "Presence of encephalopathy by clinical exam",
+          "id": "b8fe4c4c-aae3-4669-9972-7b8ef9f45d95",
+          "type": "select",
+          "options": "yes-no-unknown",
+          "mandatory": true
+        },
+        {
+          "prompt": "Diffusion restriction of subcortical white matter on day 3-14",
+          "id": "16e3075c-f4dd-45ad-8efb-7aa3948f80a4",
+          "type": "select",
+          "options": "yes-no-unknown",
+          "mandatory": true
+        }
+      ]
+    },
+    {
+      "prompt": "Inclusion Criteria: Common",
+      "id": "2f39e4f4-87b5-42f5-8778-788c5ae94b94",
+      "questions": [
+        {
+          "prompt": "Relative sparing of pre/post central gyrus, restricted diffusion in cortex",
+          "id": "b6e95aae-6c49-47fa-b7fe-53829b2997d2",
+          "type": "select",
+          "options": "yes-no-unknown",
+          "mandatory": true
+        },
+        {
+          "prompt": "Early seizure with fever on days 1-2 with recurrence of seizures on day 3-7",
+          "id": "7eee4c3e-1399-4920-a0e3-371cbf0e5a98",
+          "type": "select",
+          "options": "yes-no-unknown",
+          "mandatory": true
+        }
+      ]
+    },
+    {
+      "prompt": "Report Details",
+      "id": "5dfda046-96fd-4b4f-9d6c-e9e1e8ebf2f8",
+      "questions": [
+        {
+          "prompt": "Name of health care professional completing this case log",
+          "id": "63cdfd82-d9c1-44d4-8b63-e9ea451d9c5e",
+          "type": "string",
+          "mandatory": true,
+          "help_text": "Do not include the name of the patient"
+        },
+        {
+          "prompt": "Email address of health care professional completing this case log",
+          "id": "d0c17574-1cc6-4f64-8ff2-3f87cb215582",
+          "type": "string",
+          "mandatory": true
+        },
+        {
+          "prompt": "FULLY DE-IDENTIFIED Case Number",
+          "id": "97cd6fa6-2b6b-466e-bc83-c0ee6c7760f4",
+          "type": "string",
+          "help_text": "(e.g. \"Institute name\"-AESD-001) \n\nPlease do not include patient initials or other unique patient identifiers",
+          "mandatory": true
+        }
+      ]
+    },
+    {
+      "prompt": "Demographics",
+      "id": "0fca2769-fbe3-4a32-92e4-d5d87e12c3d9",
+      "questions": [
+        {
+          "prompt": "State or Country of Hospitalization",
+          "id": "9c825423-2484-4921-975e-38e01f9a3b3d",
+          "type": "string"
+        },
+        {
+          "prompt": "Month of Clinical Presentation",
+          "id": "85b40ff0-17c5-4eb0-b346-bbc65ca55cdc",
+          "type": "select",
+          "options": "months"
+        },
+        {
+          "prompt": "Year of Clinical Presentation",
+          "id": "ab2fbaad-f912-4571-baa6-c8601fbe6084",
+          "type": "select",
+          "options": [
+            "2014",
+            "2015",
+            "2016",
+            "2017",
+            "2018",
+            "2019",
+            "2020",
+            "2021",
+            "2022",
+            "2023",
+            "2024",
+            "2025"
+          ]
+        },
+        {
+          "prompt": "Age at presentation (months)",
+          "id": "18dd5ca1-7944-4992-ae96-0f9486435e5d",
+          "type": "number"
+        },
+        {
+          "prompt": "Sex",
+          "id": "d959f12b-6808-4fdb-9253-763e00456b4b",
+          "type": "select",
+          "options": "male-female-unknown"
+        },
+        {
+          "prompt": "Ethnicity",
+          "id": "3a04d09b-7bbd-4459-a6fb-8d74e9666bb4",
+          "type": "select",
+          "options": [
+            "East Asian (Japanese/Chinese/Korean)",
+            "Hispanic or Latin American",
+            "Black",
+            "White",
+            "South Asian (Indian Subcontinent)",
+            "South East Asian (Filipino, Indochinese, Malay/Indonesian)",
+            "Mixed/Other"
+          ]
+        }
+      ]
+    },
+    {
+      "prompt": "Past medical history/comorbidities",
+      "id": "01e8644b-c69a-4c67-a664-9768604fe591",
+      "questions": [
+        {
+          "prompt": "Any pre-existing neurodevelopmental / psychiatric / behavioural problems",
+          "id": "3350e97e-ab8c-45a8-9340-ea5f4ac63902",
+          "type": "select",
+          "options": [
+            "None",
+            "ADHD",
+            "Autistic spectrum disorder",
+            "Developmental delay/intellectual disability/learning difficulties",
+            "Tic",
+            "Combined",
+            "Other"
+          ]
+        },
+        {
+          "prompt": "Pre-existing neurodevelopmental / psychiatric / behavioural problems - details",
+          "id": "e6229b4e-ba58-4078-8ff8-ff50d12c05e2",
+          "type": "text",
+          "depends_on": {
+            "id": "3350e97e-ab8c-45a8-9340-ea5f4ac63902",
+            "value": "Other"
+          },
+          "help_text": "Please enter further details"
+        },
+        {
+          "prompt": "Any pre-existing neurological problems",
+          "id": "90c511dc-c390-4719-9075-bb81e1182236",
+          "type": "select",
+          "options": [
+            "None",
+            "Cerebral palsy",
+            "Epilepsy",
+            "Febrile seizures",
+            "Other"
+          ]
+        },
+        {
+          "prompt": "Pre-existing neurological problems - details",
+          "id": "40e001d0-cb41-4295-b231-881271de03d1",
+          "type": "text",
+          "help_text": "Please enter further details",
+          "depends_on": {
+            "id": "90c511dc-c390-4719-9075-bb81e1182236",
+            "value": "Other"
+          }
+        },
+        {
+          "prompt": "Any prior autoimmune / inflammatory disease",
+          "id": "98af4b4c-b3e5-45dc-8f92-a9aac0b24691",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Any prior autoimmune / inflammatory disease - details",
+          "id": "eb2aa12b-e071-4da1-8f44-52ad91b8666e",
+          "type": "text",
+          "depends_on": {
+            "id": "98af4b4c-b3e5-45dc-8f92-a9aac0b24691",
+            "value": "Yes"
+          },
+          "help_text": "Please enter further details"
+        },
+        {
+          "prompt": "Pregnancy/birth issues",
+          "id": "69940ed0-ab07-4697-a0ad-213c79c4b408",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Pregnancy/birth issues - further details",
+          "id": "a33dc6eb-9b3f-4abf-8c1e-f6f1a75bd769",
+          "type": "text",
+          "depends_on": {
+            "id": "69940ed0-ab07-4697-a0ad-213c79c4b408",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Birth at term or preterm",
+          "id": "dc654ee9-5e8d-4249-a2d8-acdd3b6aaad0",
+          "type": "select",
+          "options": [
+            "Birth at term",
+            "Moderate to late preterm (32 to 37 w)",
+            "Very  preterm (28  to less than 32 w)",
+            "Extremely  preterm (less than 28 w)",
+            "Unknown"
+          ]
+        }
+      ]
+    },
+    {
+      "prompt": "Family History",
+      "id": "5bf2083d-32d8-4b06-bf49-e8e299a9c7d7",
+      "questions": [
+        {
+          "prompt": "Significant family history for autoimmune / inflammatory disease",
+          "id": "dfc45115-0a20-43ad-93f4-083c13aed0a5",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Significant family history for autoimmune / inflammatory disease - details",
+          "id": "b820190b-4cc0-4ea9-b6af-6c7980acb0b9",
+          "type": "text",
+          "depends_on": {
+            "id": "dfc45115-0a20-43ad-93f4-083c13aed0a5",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Family history for a similar disease to that of this patient",
+          "id": "86d28ef7-4fc5-45d8-9304-bb9f3c4179a6",
+          "type": "select",
+          "options": "yes-no-unknown",
+          "help_text": "e.g. familial ANE"
+        },
+        {
+          "prompt": "Family history for a similar disease to that of this patient - details",
+          "id": "adabd84a-e3a1-4350-bc65-fe0cc09f43e6",
+          "type": "text",
+          "depends_on": {
+            "id": "86d28ef7-4fc5-45d8-9304-bb9f3c4179a6",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Childhood vaccination status up-to-date for age",
+          "id": "d01da147-cf0d-4e9f-bad1-d3ef3e8bd664",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Did child receive any vaccine 3 months prior to onset AESD symptoms",
+          "id": "aff4bbae-9175-4d89-8f82-8f565f587e1e",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Did child receive any vaccine 3 months prior to onset AESD symptoms - details",
+          "id": "41c356b1-882f-4c3a-b702-c86f4ec66496",
+          "type": "text",
+          "depends_on": {
+            "id": "aff4bbae-9175-4d89-8f82-8f565f587e1e",
+            "value": "Yes"
+          }
+        }
+      ]
+    },
+    {
+      "prompt": "Triggering Infection",
+      "id": "691f7aac-0d14-4263-bda8-ec6a8f188d57",
+      "questions": [
+        {
+          "prompt": "Fever Onset Date",
+          "id": "3e6a0279-c88a-4db3-a180-168f2b281867",
+          "type": "date"
+        },
+        {
+          "prompt": "Fever timing with respect to onset of neurological symptoms",
+          "id": "657924ed-5347-4a91-9ebb-256a8dc63346",
+          "type": "select",
+          "options": [
+            "Before neurological onset and still present at neurological onset",
+            "Before neurological onset, not specified if still present at neurological onset",
+            "Only after neurological onset",
+            "Only before neurological onset, and afebrile by the time of neurological onset",
+            "Timing unclear",
+            "No fever"
+          ]
+        },
+        {
+          "prompt": "Infection trigger identified?",
+          "id": "6e3511d2-f4f7-4a03-bc82-262bff7a3109",
+          "type": "select",
+          "options": [
+            "No",
+            "Yes- Adenovirus",
+            "Yes- Bocavirus",
+            "Yes - Chikungunya virus",
+            "Yes - Covid-19",
+            "Yes - Coxsackievirus",
+            "Yes - Cytomegalovirus (CMV)",
+            "Yes - Dengue virus",
+            "Yes - Entero-haemorrhagic Escherichia Coli (EHEC)",
+            "Yes - Enterovirus",
+            "Yes - Epstein-Barr virus (EBV)",
+            "Yes - Human herpes virus 6 (HHV6)",
+            "Yes - Human herpes virus 7 (HHV7)",
+            "Yes - Human herpes virus 8 (HHV8)",
+            "Yes - Herpes simplex virus 1 (HSV1)",
+            "Yes - Herpes simplex virus 2 (HSV2)",
+            "Yes - Influenza virus A",
+            "Yes - Influenza virus B",
+            "Yes - Influenza virus NOS",
+            "Yes - Japanese encephalitis virus (JEV)",
+            "Yes - Measles virus",
+            "Yes - Mycoplasma pneumoniae",
+            "Yes - Norovirus",
+            "Yes - Parainfluenza virus",
+            "Yes - Parvovirus B-19",
+            "Yes - Respiratory syncytial virus (RSV)",
+            "Yes - Rotavirus",
+            "Yes - Varicella zoster virus (VZV)",
+            "Yes - West Nile virus",
+            "Yes - Zika virus",
+            "Yes - other (please specify )"
+          ]
+        },
+        {
+          "prompt": "Other infective trigger - details",
+          "id": "0bbefa67-a74d-4889-b541-e0b553ee239a",
+          "type": "string",
+          "depends_on": {
+            "id": "6e3511d2-f4f7-4a03-bc82-262bff7a3109",
+            "value": "Yes - other (please specify )"
+          }
+        }
+      ]
+    },
+    {
+      "prompt": "Neurologic Symptoms during Acute Admission",
+      "id": "aa31ba43-d3a2-418f-b6f0-0f5cc4b4031a",
+      "questions": [
+        {
+          "prompt": "Date of encephalopathy onset",
+          "id": "f9d09c78-4297-47b4-8cbb-4a526031e05d",
+          "type": "date"
+        },
+        {
+          "prompt": "Were seizures present?",
+          "id": "ce6da102-36d0-44af-9239-aaba20d8f82d",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Seizure onset date",
+          "id": "52a8c708-c0d7-4db2-ba08-08d18329e1af",
+          "type": "date",
+          "depends_on": {
+            "id": "ce6da102-36d0-44af-9239-aaba20d8f82d",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "First seizure type",
+          "id": "641878e0-5995-444b-a80b-d69defe07baf",
+          "type": "select",
+          "options": [
+            "FOCAL ONSET- aware with motor onset",
+            "FOCAL ONSET- aware with non motor onset",
+            "FOCAL ONSET- impaired awareness with motor onset",
+            "FOCAL ONSET- impaired awareness with non-motor onset",
+            "FOCAL ONSET- NOS",
+            "FOCAL TO BILATERAL",
+            "GENERALISED ONSET- motor onset",
+            "GENERALISED ONSET- non motor onset (absence)",
+            "GENERALISED ONSET- NOS",
+            "UNKNOWN/UNCLASSIFIED "
+          ]
+        },
+        {
+          "prompt": "Duration of first seizure (minutes)",
+          "id": "2c6f538a-18cc-4d7b-9e06-6f35aa3adac4",
+          "type": "number"
+        },
+        {
+          "prompt": "Biphasic course of seizures",
+          "id": "50add840-8bbc-4620-bf86-d5a96fe7e78c",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Period of seizure freedom before second phase (in hours)",
+          "id": "75dbbe7f-af57-4133-b8ac-bb64183a1a85",
+          "type": "number"
+        },
+        {
+          "prompt": "Second seizure type",
+          "id": "242d9bbf-cff3-4963-81aa-23441b9512a1",
+          "type": "select",
+          "options": [
+            "FOCAL ONSET- aware with motor onset",
+            "FOCAL ONSET- aware with non motor onset",
+            "FOCAL ONSET- impaired awareness with motor onset",
+            "FOCAL ONSET- impaired awareness with non-motor onset",
+            "FOCAL ONSET- NOS",
+            "FOCAL TO BILATERAL",
+            "GENERALISED ONSET- motor onset",
+            "GENERALISED ONSET- non motor onset (absence)",
+            "GENERALISED ONSET- NOS",
+            "UNKNOWN/UNCLASSIFIED "
+          ]
+        },
+        {
+          "prompt": "Duration of second seizure (minutes)",
+          "id": "ac6063ff-80d6-4b3c-ae1e-44f3b6f5fb43",
+          "type": "number"
+        },
+        {
+          "prompt": "Date of hospital admission",
+          "id": "eeca44a2-fda3-449d-bca2-7f57b55a4683",
+          "type": "date"
+        },
+        {
+          "prompt": "Status epilepticus / repeated seizures without recovery",
+          "id": "875d6b78-8930-4df3-a1b5-a29fea117811",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Any systemic symptoms or complications",
+          "id": "ce282f4b-7a03-4c96-8f04-7e6d03452f78",
+          "type": "select",
+          "options": [
+            "None",
+            "Shock",
+            "Anaemia",
+            "Thrombocytopaenia",
+            "Disseminated intravascular coagulation",
+            "Acidosis",
+            "Raised hepatocellular enzymes",
+            "Renal dysfunction",
+            "Combined",
+            "Other"
+          ],
+          "help_text": "Shock defined as organ and tissue hypoperfusion despite preserved intravascular volume, typically manifesting as hypotension with vasopressor\nrequirement and lactic acidosis"
+        },
+        {
+          "prompt": "Systemic symptoms or complications - details",
+          "id": "d4803faa-de7b-4b46-a358-2d60da6f58c3",
+          "type": "text",
+          "depends_on": {
+            "id": "ce282f4b-7a03-4c96-8f04-7e6d03452f78",
+            "value": "Other"
+          }
+        },
+        {
+          "prompt": "Movement disorder",
+          "id": "7fab70dd-26ad-4a4a-a0b0-e478ed955695",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Movement disorder onset",
+          "id": "82cb6fdb-aed6-4d4d-bd6f-3ea4a1ea60a7",
+          "type": "date",
+          "depends_on": {
+            "id": "7fab70dd-26ad-4a4a-a0b0-e478ed955695",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Motor deficit",
+          "id": "d56735a8-0599-48a3-b07c-b055d76c17f1",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Motor deficit - onset",
+          "id": "aee3d743-6e4b-41f1-8c63-278ef58510c5",
+          "type": "date",
+          "depends_on": {
+            "id": "d56735a8-0599-48a3-b07c-b055d76c17f1",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Dysautonomia",
+          "id": "ece84be6-1429-40d1-bfad-52fbe8f9de26",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Dysautonomia - onset",
+          "id": "34e2ab89-f29a-4a8a-9775-0e2746d08ccf",
+          "type": "date",
+          "depends_on": {
+            "id": "ece84be6-1429-40d1-bfad-52fbe8f9de26",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Visual impairment",
+          "id": "a96b08ba-d8ee-4be0-8580-d193fc25932f",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Visual impairment - onset",
+          "id": "9507f0e1-bb08-4584-b343-02349943323b",
+          "type": "date",
+          "depends_on": {
+            "id": "a96b08ba-d8ee-4be0-8580-d193fc25932f",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Ataxia/gait instability",
+          "id": "0d60179a-bc4f-4ede-a2bf-a88a561b89a3",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Ataxia/gait instability - onset",
+          "id": "43c647b6-fba6-45d0-ac31-e8502987ebee",
+          "type": "date",
+          "depends_on": {
+            "id": "0d60179a-bc4f-4ede-a2bf-a88a561b89a3",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Sleep disturbances",
+          "id": "58160682-45b3-4fd7-8ecb-374624d94ffd",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Sleep disturbances - onset",
+          "id": "141fce7b-9732-4cd2-997b-5338c213563d",
+          "type": "date",
+          "depends_on": {
+            "id": "58160682-45b3-4fd7-8ecb-374624d94ffd",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Speech disturbances",
+          "id": "70e403ed-8546-4872-8a5c-3cbe92a52718",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Speech disturbances - onset",
+          "id": "f8713fb7-a508-4bfe-9bb4-774305b4a4b5",
+          "type": "date",
+          "depends_on": {
+            "id": "70e403ed-8546-4872-8a5c-3cbe92a52718",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Other symptoms",
+          "id": "8db78bcd-e3b2-43a1-9f48-ad21fff8781c",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Other symptoms - onset",
+          "id": "1e53a236-744a-4050-a9d3-13f4a5ba5f04",
+          "type": "date",
+          "depends_on": {
+            "id": "8db78bcd-e3b2-43a1-9f48-ad21fff8781c",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Other symptoms - details",
+          "id": "076167b0-c6b6-4add-883d-7fcb6d1678b6",
+          "type": "text",
+          "depends_on": {
+            "id": "8db78bcd-e3b2-43a1-9f48-ad21fff8781c",
+            "value": "Yes"
+          }
+        }
+      ]
+    },
+    {
+      "prompt": "Laboratory Results",
+      "id": "5000eb08-8b76-4c19-ba4c-2a4bb9879403",
+      "questions": [
+        {
+          "prompt": "Abnormal Transaminases?",
+          "id": "eddcb85c-f202-4f0e-8039-684f4799f94e",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Peak ALT",
+          "id": "2a302e87-a0b7-4980-ba02-4938d6dddfd2",
+          "type": "number",
+          "depends_on": {
+            "id": "eddcb85c-f202-4f0e-8039-684f4799f94e",
+            "value": "Yes"
+          },
+          "help_text": "Please provide most abnormal value"
+        },
+        {
+          "prompt": "ALT Range",
+          "id": "0e397385-b2ef-4674-aba9-90e8c937f2c2",
+          "type": "string",
+          "depends_on": {
+            "id": "eddcb85c-f202-4f0e-8039-684f4799f94e",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Peak AST",
+          "id": "0f435158-25d0-4772-af35-e8cd229052d5",
+          "type": "number",
+          "depends_on": {
+            "id": "eddcb85c-f202-4f0e-8039-684f4799f94e",
+            "value": "Yes"
+          },
+          "help_text": "Please provide most abnormal value"
+        },
+        {
+          "prompt": "AST Range",
+          "id": "3c00026e-5699-4ece-899e-97e683bacb61",
+          "type": "string",
+          "depends_on": {
+            "id": "eddcb85c-f202-4f0e-8039-684f4799f94e",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Ammonia",
+          "id": "371f4195-9119-487f-b985-b7fcce92d4ac",
+          "type": "number",
+          "help_text": "If available, provide peak value (first 24h)"
+        },
+        {
+          "prompt": "Ammonia Range",
+          "id": "f9a5bc58-7472-47bd-bc5b-e4605e9b8395",
+          "type": "string"
+        },
+        {
+          "prompt": "BUN",
+          "id": "07d3dc46-639c-4950-9247-0001d2792a4b",
+          "type": "number",
+          "help_text": "If available, provide peak value (first 24h)"
+        },
+        {
+          "prompt": "BUN Range",
+          "id": "b8dfdcef-7951-46c1-9901-96adce48449a",
+          "type": "string"
+        },
+        {
+          "prompt": "Glucose",
+          "id": "82a9490d-3a17-4ad6-8cd9-31a9e683c66b",
+          "type": "number",
+          "help_text": "If available, provide peak value (first 24h)"
+        },
+        {
+          "prompt": "Glucose Range",
+          "id": "28fbee6e-bd0d-4c29-9dcc-7b6f649b84b9",
+          "type": "string"
+        },
+        {
+          "prompt": "Creatinine",
+          "id": "53cb2a06-ff14-4937-92ea-3a114edebba7",
+          "type": "number",
+          "help_text": "If available, provide peak value (first 24h)"
+        },
+        {
+          "prompt": "Creatinine Range",
+          "id": "9cf82815-a179-45f8-b320-3b6a5db19910",
+          "type": "string"
+        },
+        {
+          "prompt": "CK",
+          "id": "bb4ad158-7d90-4e48-b0a3-135c6e5fca64",
+          "type": "number",
+          "help_text": "If available, provide peak value (first 24h)"
+        },
+        {
+          "prompt": "CK Range",
+          "id": "60ae5704-24c7-4e14-b2ce-8c61e442d328",
+          "type": "string"
+        },
+        {
+          "prompt": "pH",
+          "id": "c6283021-0795-45cb-bde4-334c03fc2cf1",
+          "type": "number",
+          "help_text": "If available, provide peak value (first 24h)"
+        },
+        {
+          "prompt": "pH Range",
+          "id": "ce22bb68-106c-4b11-a27a-2003ec37e029",
+          "type": "string"
+        },
+        {
+          "prompt": "WBC Count",
+          "id": "795e1dc1-45d5-47ab-8d0d-2cda08ca5dcd",
+          "type": "number",
+          "help_text": "If available, provide peak value (first 24h)"
+        },
+        {
+          "prompt": "WBC Range",
+          "id": "62e6635c-cc66-4462-b6fc-920a8ae4f8ae",
+          "type": "string"
+        },
+        {
+          "prompt": "CRP",
+          "id": "68972d70-db18-43b4-953d-b6f52bfe5261",
+          "type": "number",
+          "help_text": "If available, provide peak value (first 24h)"
+        },
+        {
+          "prompt": "CRP Range",
+          "id": "38fdb697-f47b-498b-8e69-b6ce8c5c33ef",
+          "type": "string"
+        },
+        {
+          "prompt": "Serum Cytokines (if available)",
+          "id": "1464ee72-91f0-4de2-9f99-38b1df5a1949",
+          "type": "text"
+        },
+        {
+          "prompt": "Metabolic Testing (if available)",
+          "id": "469b05e8-f3e2-4640-8588-3e19fb47f301",
+          "type": "text"
+        },
+        {
+          "prompt": "Genetic testing done",
+          "id": "3c6e0d05-ec89-4f5e-aa67-3c265654e813",
+          "type": "select",
+          "options": [
+            "WGS",
+            "WES",
+            "Array",
+            "Mito",
+            "Panel",
+            "Other",
+            "None"
+          ]
+        },
+        {
+          "prompt": "Relevant genetic results",
+          "id": "94e0b168-e29b-4e3e-a5f0-dc33e0f1afdd",
+          "type": "text"
+        },
+        {
+          "prompt": "Any other significant abnormalities in the CBC, CMP, and coagulation profile",
+          "id": "711bf6ea-1549-419a-9af7-a1ff7f81effd",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "prompt": "CSF",
+      "id": "8d3e654d-a260-4750-a6fa-ead7b2f2a076",
+      "questions": [
+        {
+          "prompt": "CSF WBC",
+          "id": "8df647a6-5616-4478-9a54-8b59aad93ed7",
+          "type": "number"
+        },
+        {
+          "prompt": "CSF RBC",
+          "id": "58c28465-16a1-4498-86a1-d32909e176b3",
+          "type": "number"
+        },
+        {
+          "prompt": "CSF Glucose",
+          "id": "0fdfa57b-240d-4bf8-9e60-4c21f848c5ce",
+          "type": "number"
+        },
+        {
+          "prompt": "CSF Protein",
+          "id": "1742585d-a6d1-4a9f-8df9-33b5492491ad",
+          "type": "number"
+        },
+        {
+          "prompt": "Paired serum glucose",
+          "id": "a1da22f6-26f2-4e48-b51c-bd42e3964198",
+          "type": "number"
+        },
+        {
+          "prompt": "Paired serum glucose",
+          "id": "8e383d9d-e67e-46e7-89f5-2002bedfc936",
+          "type": "number"
+        },
+        {
+          "prompt": "CSF cytokines if available",
+          "id": "d6d92bb5-3839-4d76-a336-89340315b219",
+          "type": "text"
+        },
+        {
+          "prompt": "CSF Lactate if available",
+          "id": "17fe9d1a-c0db-416a-9cf4-d69dcfcad54e",
+          "type": "number"
+        },
+        {
+          "prompt": "Paired serum lactate",
+          "id": "57b4f183-cfbd-41e4-aa25-7f2d8e73caf3",
+          "type": "number"
+        },
+        {
+          "prompt": "CSF neopterines or quinolinic acid if available",
+          "id": "9257b90f-54d9-44b5-a20b-3045448cdf81",
+          "type": "text"
+        },
+        {
+          "prompt": "Oligoclonal Bands",
+          "id": "4ba7d6fd-8a8e-447f-8b85-ab3547e1cfa3",
+          "type": "select",
+          "options": [
+            "type 1, no bands in CSF and serum",
+            "type 2, oligoclonal IgG bands in CSF",
+            "type 3, oligoclonal bands in CSF and serum with additional bands in CSF",
+            "type 4, identical oligoclonal bands in CSF and serum",
+            "type 5, monoclonal bands in CSF and serum",
+            "data not provided"
+          ]
+        },
+        {
+          "prompt": "Any antibody tested?",
+          "id": "487a70af-3e94-4a53-b2d0-f046f4d9eacc",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Positive antibody results",
+          "id": "54ef1f35-c60e-4639-9dfb-08e89988bb94",
+          "type": "text",
+          "depends_on": {
+            "id": "487a70af-3e94-4a53-b2d0-f046f4d9eacc",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Any other signifciant abnormalities in the CSF",
+          "id": "c567a681-2174-44c2-b2cc-7f3d1291b15c",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "prompt": "MRI Findings",
+      "id": "7f12f7e4-d8b6-48c1-ac14-3de7307f906f",
+      "questions": [
+        {
+          "prompt": "Please paste entire read of MRI without PHI",
+          "id": "01c66f34-aa17-4a63-a253-c3d8a85eeb49",
+          "type": "text"
+        },
+        {
+          "prompt": "MRI Date",
+          "id": "54d065b4-6f36-4889-9585-0910b42daeec",
+          "type": "date"
+        },
+        {
+          "prompt": "Days between onset of neurological symptoms and first MRI",
+          "id": "82bdf11b-bcaa-4ffe-bb36-2ded6d1b4987",
+          "type": "number"
+        },
+        {
+          "prompt": "DWI restriction in the subcortical white matter (bright tree appearance) at any time",
+          "id": "cf80f4ab-5c52-4c6e-b329-e52876549159",
+          "type": "select",
+          "options": [
+            "No",
+            "Yes- unilateral",
+            "Yes- bilateral",
+            "Yes- NOS",
+            "Data not provided"
+          ]
+        },
+        {
+          "prompt": "DWI restriction in the cortex at any time",
+          "id": "a11e1fc2-6713-4e19-987f-51beacc96d01",
+          "type": "select",
+          "options": [
+            "No",
+            "Yes- unilateral",
+            "Yes- bilateral",
+            "Yes- NOS",
+            "Data not provided"
+          ]
+        },
+        {
+          "prompt": "Subcortical white matter and/or cortical matter abnormalities present on day 1-2 of fever",
+          "id": "d7ba6c9b-a689-4b94-b2d4-5fbf797796b2",
+          "type": "select",
+          "options": [
+            "No",
+            "Yes- unilateral",
+            "Yes- bilateral",
+            "Yes- NOS",
+            "Data not provided"
+          ]
+        },
+        {
+          "prompt": "Subcortical white matter and/or cortical matter abnormalities present on day 3-14 of fever",
+          "id": "ea36435e-c9f7-469d-935a-0f2230ba4b84",
+          "type": "select",
+          "options": [
+            "No",
+            "Yes- unilateral",
+            "Yes- bilateral",
+            "Yes- NOS",
+            "Data not provided"
+          ]
+        }
+      ]
+    },
+    {
+      "prompt": "EEG Findings",
+      "id": "90d14a06-1e2e-4590-a8e1-f6ec49184321",
+      "questions": [
+        {
+          "prompt": "EEG Date",
+          "id": "04b54225-4104-44aa-913f-d497eb52a1d9",
+          "type": "date"
+        },
+        {
+          "prompt": "EEG timing from neurological symptoms onet (days)",
+          "id": "d9d59e0d-ef36-4f9f-8170-d055b9273f39",
+          "type": "number"
+        },
+        {
+          "prompt": "Slow or disorganised activity",
+          "id": "b35ff9e9-1f60-4864-af68-f3ed9c78145b",
+          "type": "select",
+          "options": [
+            "No",
+            "Yes - focal",
+            "Yes - diffuse",
+            "Yes - but not specified if focal or diffuse",
+            "Data not provided"
+          ]
+        },
+        {
+          "prompt": "Interictal epileptic discharges",
+          "id": "f32a1789-8303-458c-bff6-8a83745771b1",
+          "type": "select",
+          "options": [
+            "No",
+            "Yes - focal",
+            "Yes - multifocal",
+            "Yes - generalized",
+            "Yes - focal/multifocal + generalized",
+            "Yes - but not specified if focal or generalised",
+            "Data not provided"
+          ]
+        },
+        {
+          "prompt": "Recorded seizures",
+          "id": "7bcf3b19-9d6e-4ee6-9bed-4f67c293348a",
+          "type": "select",
+          "options": [
+            "No",
+            "Yes - focal",
+            "Yes - multifocal",
+            "Yes - generalized",
+            "Yes - focal/multifocal + generalized",
+            "Yes - but not specified if focal or generalised",
+            "Data not provided"
+          ]
+        },
+        {
+          "prompt": "Shifting ictal discharge between hemispheres (i.e. FIRES)",
+          "id": "58cc8104-d8a2-441c-968d-2c3b1efff48b",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Recorded status epilepticus",
+          "id": "a5113026-2b50-4e5d-88ee-f88b9ee52fd1",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Extreme delta brush",
+          "id": "f1d1e5b4-afcb-4469-b022-83fb6c041c0d",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Periodic lateralized epileptiform discharges (PLEDs)",
+          "id": "222155e0-0920-4624-816d-3b0f1ca5c83a",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Other (detail)",
+          "id": "ad781696-d6d7-4194-a9dc-eb46cea1f4bf",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "prompt": " AESD risk score (Tada et al 2015) ",
+      "id": "638c5bfb-c096-460c-b7b6-4e74bfee242b",
+      "questions": [
+        {
+          "prompt": "Consciousness level 24h after seizures (0-3 points)",
+          "id": "087595d7-0346-4022-a742-7c01c2b41248",
+          "type": "select",
+          "options": [
+            "0",
+            "1",
+            "2",
+            "3"
+          ],
+          "help_text": "GCS 15: 0 points\nGCS 13-14: 1 point\nGCS 9-12: 2 points\nGCS 3-8: 3 points"
+        },
+        {
+          "prompt": "Age < 18 months (1 pt)",
+          "id": "118bf26e-fe00-4453-842f-e62fcf201226",
+          "type": "boolean"
+        },
+        {
+          "prompt": "Initial convulsion duration >40 mins (1 pt)",
+          "id": "08586f42-b788-4d6b-9f31-cd612e094a43",
+          "type": "boolean"
+        },
+        {
+          "prompt": "Mechanical ventilation (1 pt)",
+          "id": "e90654bc-1529-4535-a10a-02d67cb0f77f",
+          "type": "boolean"
+        },
+        {
+          "prompt": "AST on admission > 40mEq/l (1 pt)",
+          "id": "209c3a0a-3684-438a-ab13-e5e171a0a23b",
+          "type": "boolean"
+        },
+        {
+          "prompt": "Blood glucose on admission > 200 mg/dl (1 pt)",
+          "id": "099fe78e-0200-4369-8bbf-a1941366f1aa",
+          "type": "boolean"
+        },
+        {
+          "prompt": "Serum Cr on admission > 0.35 mg/dl (1 pt)",
+          "id": "e8d5522e-9c2f-4807-8e0c-f7269d62e7cc",
+          "type": "boolean"
+        },
+        {
+          "prompt": "Total AESD Risk Score ",
+          "id": "0f975109-f5cc-4161-b1c0-c43ef4868757",
+          "type": "number",
+          "help_text": "Sum of points above"
+        }
+      ]
+    },
+    {
+      "prompt": "Clinical Management",
+      "id": "426144c1-a857-4001-b717-04f278c46439",
+      "questions": [
+        {
+          "prompt": "ICU Admission",
+          "id": "23765fdc-b54b-4aa7-b4a5-a56b6ab72fb8",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Date of ICU Admission",
+          "id": "7544ac55-2e99-4a9f-a402-0b5530616292",
+          "type": "date",
+          "depends_on": {
+            "id": "23765fdc-b54b-4aa7-b4a5-a56b6ab72fb8",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Date of ICU Discharge",
+          "id": "a40f154a-52e2-4942-854d-4c96910e7fa1",
+          "type": "date",
+          "depends_on": {
+            "id": "23765fdc-b54b-4aa7-b4a5-a56b6ab72fb8",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Intubated?",
+          "id": "1bd397e7-1ad1-4282-a5cb-e452a3f17be4",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Date of Intubation",
+          "id": "528f1bb6-2f6a-4d72-ba54-b3d4bff4bafa",
+          "type": "date",
+          "depends_on": {
+            "id": "1bd397e7-1ad1-4282-a5cb-e452a3f17be4",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Date of Extubation",
+          "id": "18cbaa2b-0098-4c8e-8e85-e262e4609f32",
+          "type": "date",
+          "depends_on": {
+            "id": "1bd397e7-1ad1-4282-a5cb-e452a3f17be4",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Infusions of ASM required for seizure management?",
+          "id": "6e1eb868-cc9d-4ea1-88ab-3e3403229ace",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Duration of infusions (hours)",
+          "id": "32e31f46-71e2-4d53-9ac4-45e5e2801153",
+          "type": "number",
+          "depends_on": {
+            "id": "6e1eb868-cc9d-4ea1-88ab-3e3403229ace",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Hypothermia induced?",
+          "id": "b58ea3c8-d65d-4df8-a0b6-11ac32a68772",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Elevated ICP?",
+          "id": "3e6b712e-d504-43cf-914c-7c2bf8ca2298",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "ICP management (tiers of ICP lowering)",
+          "id": "fb95d44f-5273-4637-a316-3781ffac86c1",
+          "type": "string"
+        },
+        {
+          "prompt": "ICP monitoring (e.g., bolt, EVD)?",
+          "id": "d5233af5-4983-4d18-b70f-83f32511a58c",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "ICP monitoring (e.g., bolt, EVD) - details",
+          "id": "db58be19-7104-40a9-8ac3-4ea3dd97e4d0",
+          "type": "string",
+          "depends_on": {
+            "id": "d5233af5-4983-4d18-b70f-83f32511a58c",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "ICP Peak",
+          "id": "07d59642-7895-4a21-ab78-562b2d20c673",
+          "type": "number",
+          "depends_on": {
+            "id": "d5233af5-4983-4d18-b70f-83f32511a58c",
+            "value": "Yes"
+          }
+        }
+      ]
+    },
+    {
+      "prompt": "Immunotherapies",
+      "id": "54e30992-929a-4937-af81-b413c7a944c8",
+      "questions": [
+        {
+          "prompt": "Acute phase immunotherapy",
+          "id": "b781354d-6e4f-4411-bc4f-42e6801b7a98",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "IV steroids",
+          "id": "13db3624-a0e5-4531-a17d-c692c204c2f3",
+          "type": "select",
+          "options": "yes-no-unknown",
+          "depends_on": {
+            "id": "b781354d-6e4f-4411-bc4f-42e6801b7a98",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "IV steroids - start date",
+          "id": "b57c3ddf-2650-4ce8-98f8-0e44c2f930e5",
+          "type": "date",
+          "depends_on": {
+            "id": "13db3624-a0e5-4531-a17d-c692c204c2f3",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "IV steroids - stop date",
+          "id": "e2921ea6-013f-429f-a638-4eb77270ab10",
+          "type": "date",
+          "depends_on": {
+            "id": "13db3624-a0e5-4531-a17d-c692c204c2f3",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Oral steroids acute phase (no dropdown)",
+          "id": "d657d6c7-151f-4fdc-828b-1204608127b9",
+          "type": "select",
+          "options": "yes-no-unknown",
+          "depends_on": {
+            "id": "b781354d-6e4f-4411-bc4f-42e6801b7a98",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Oral steroids acute phase (no dropdown) - start date",
+          "id": "c44dc697-8ec3-4b59-a056-fa95c187af85",
+          "type": "date",
+          "depends_on": {
+            "id": "d657d6c7-151f-4fdc-828b-1204608127b9",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Oral steroids acute phase (no dropdown) - stop date",
+          "id": "a6fa5b3c-b360-4645-af5e-754255acf50d",
+          "type": "date",
+          "depends_on": {
+            "id": "d657d6c7-151f-4fdc-828b-1204608127b9",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "IVIG",
+          "id": "f4971a8a-1f20-4e70-8966-ab6289aa1676",
+          "type": "select",
+          "options": "yes-no-unknown",
+          "depends_on": {
+            "id": "b781354d-6e4f-4411-bc4f-42e6801b7a98",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "IVIG - start date",
+          "id": "60cb709f-635b-41fe-a597-de946a855c70",
+          "type": "date",
+          "depends_on": {
+            "id": "f4971a8a-1f20-4e70-8966-ab6289aa1676",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "IVIG - stop date",
+          "id": "9c392bc4-2669-4041-a876-32795ba38306",
+          "type": "date",
+          "depends_on": {
+            "id": "f4971a8a-1f20-4e70-8966-ab6289aa1676",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "PLEX",
+          "id": "090ef29e-355a-4a2b-bb58-8c7c953fa428",
+          "type": "select",
+          "options": "yes-no-unknown",
+          "depends_on": {
+            "id": "b781354d-6e4f-4411-bc4f-42e6801b7a98",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "PLEX - start date",
+          "id": "ae60d3ee-c4e7-4733-aec6-9cffd1e2ba43",
+          "type": "date",
+          "depends_on": {
+            "id": "090ef29e-355a-4a2b-bb58-8c7c953fa428",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "PLEX - stop date",
+          "id": "430392b1-3f3e-4dbb-9012-622638f01c7a",
+          "type": "date",
+          "depends_on": {
+            "id": "090ef29e-355a-4a2b-bb58-8c7c953fa428",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Oral steroid tapering (dropdown)",
+          "id": "d11459aa-e7f4-4383-80d2-75ce8e1add00",
+          "type": "select",
+          "options": [
+            "None",
+            "<3 months",
+            "3-6 months",
+            "6-12 months",
+            ">12 months"
+          ]
+        },
+        {
+          "prompt": "Maintenance immunotherapy (excluding steroids dropdown)",
+          "id": "9e779f34-6f1c-44cf-9985-08d40b31782b",
+          "type": "select",
+          "options": [
+            "None",
+            "Azathioprine",
+            "Mycophenolate",
+            "Cyclophosphamide",
+            "Everolimus",
+            "Methotrexate",
+            "IvIg cycles",
+            "Steroids cycles",
+            "Other"
+          ]
+        },
+        {
+          "prompt": "Escalating treatment",
+          "id": "b239ab2e-c0b3-46fc-9a08-f30577623a1c",
+          "type": "select",
+          "options": [
+            "None",
+            "Rituximab",
+            "Bortezomib",
+            "Tocilizumab/satralizumab",
+            "Anakinra",
+            "Daratumumab",
+            "Cyclophosphamide"
+          ]
+        },
+        {
+          "prompt": "Escalating treatment - dosing regime & administrations",
+          "id": "8d918dd1-ef6c-4e12-a086-82e3c97068db",
+          "type": "text"
+        },
+        {
+          "prompt": "Successive escalating treatment",
+          "id": "de922036-c9df-41ee-8313-af9869befc67",
+          "type": "select",
+          "options": [
+            "None",
+            "Rituximab",
+            "Bortezomib",
+            "Tocilizumab/satralizumab",
+            "Anakinra",
+            "Daratumumab",
+            "Cyclophosphamide"
+          ]
+        },
+        {
+          "prompt": "Successive escalating treatment - dosing regime & administrations",
+          "id": "6332b329-ef86-4aa5-89b2-b3a8bfbc4aa0",
+          "type": "text"
+        },
+        {
+          "prompt": "Adverse events to immunotherapy",
+          "id": "04fded7e-627f-490b-bf2e-947153b9ade8",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Adverse events to immunotherapy - CTAE Grade",
+          "id": "1341ae4a-95f8-4e19-957d-314233cdceae",
+          "type": "select",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "depends_on": {
+            "id": "04fded7e-627f-490b-bf2e-947153b9ade8",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Antibiotics",
+          "id": "2a32f253-7a4b-4a51-a330-1bfc8a314b95",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Antibiotics - details",
+          "id": "96632071-27ec-438a-b557-3db60271e81d",
+          "type": "text",
+          "depends_on": {
+            "id": "2a32f253-7a4b-4a51-a330-1bfc8a314b95",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Antivirals",
+          "id": "8d7b34a1-c755-4599-ab5b-c1e51eb1e47a",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Antivirals - details",
+          "id": "60f361cd-f471-4388-8223-174200f5ab51",
+          "type": "text",
+          "depends_on": {
+            "id": "8d7b34a1-c755-4599-ab5b-c1e51eb1e47a",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Anti-seizure medications",
+          "id": "e887d39e-6f3f-4f3f-b232-ff5b45a65421",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Anti-seizure medications - details",
+          "id": "15167aba-a9b6-4bbc-a2ce-06847a4b86f8",
+          "type": "text",
+          "depends_on": {
+            "id": "e887d39e-6f3f-4f3f-b232-ff5b45a65421",
+            "value": "Yes"
+          }
+        }
+      ]
+    },
+    {
+      "prompt": "Outcomes - Discharge",
+      "id": "d2c5a37f-e015-47d7-8d65-9711666238e9",
+      "questions": [
+        {
+          "prompt": "Date of Discharge",
+          "id": "664e0bbb-c4e7-42e6-8a61-8dd37b523a85",
+          "type": "date"
+        },
+        {
+          "prompt": "Abnormal Neurology at Discharge?",
+          "id": "6f07d651-2cf2-4a64-abff-23492a69d906",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Abnormal Neurology at Discharge - details",
+          "id": "ac6f67e7-4990-444e-81f5-511aaf73a316",
+          "type": "text",
+          "depends_on": {
+            "id": "6f07d651-2cf2-4a64-abff-23492a69d906",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "mRS at discharge",
+          "id": "3e3fe571-416c-4be4-af05-b007fe5a6140",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "prompt": "Outcomes - At 6 months",
+      "id": "51315b29-e744-4250-ad0b-faf2dc663783",
+      "questions": [
+        {
+          "prompt": "Motor Outcome",
+          "id": "7c2c0a6e-849f-4baf-8e19-f35b1ee3cc4d",
+          "type": "select",
+          "options": [
+            "Unable to sit independently",
+            "Able to sit independently",
+            "Able to stand independently",
+            "Able to ambulate independently"
+          ]
+        },
+        {
+          "prompt": "Epilepsy",
+          "id": "bec03cbd-072a-4ffd-bfac-dda074f2ee1e",
+          "type": "select",
+          "options": [
+            "No",
+            "Yes - NOS ",
+            "Yes - seizures well controlled with anti-seizure medications (ASM)",
+            "Yes - seizures not controlled despite 2 well-chosen ASM (drug-resistant)",
+            "Data not provided"
+          ]
+        },
+        {
+          "prompt": "Motor disorder",
+          "id": "889bde5e-4347-46ca-8c42-8b5b48b1aea1",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Developmental issues",
+          "id": "774b4766-0b12-4b53-9b5b-84f547bc0ac1",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "mRS",
+          "id": "57b1bcbc-825f-4408-a810-45197b940eac",
+          "type": "number"
+        }
+      ]
+    },
+    {
+      "prompt": "Outcomes - At last followup",
+      "id": "aaa06f61-e26d-40a3-ab8e-7bc591277435",
+      "questions": [
+        {
+          "prompt": "Age in Months",
+          "id": "68fba319-8380-43f5-9df4-fdefadf1c8eb",
+          "type": "number"
+        },
+        {
+          "prompt": "Motor Outcome",
+          "id": "5a444577-8f78-4e97-9817-63ce71ec3eb5",
+          "type": "select",
+          "options": [
+            "Unable to sit independently",
+            "Able to sit independently",
+            "Able to stand independently",
+            "Able to ambulate independently"
+          ]
+        },
+        {
+          "prompt": "Epilepsy",
+          "id": "0518947e-d76e-4885-912f-754f88904226",
+          "type": "select",
+          "options": [
+            "No",
+            "Yes - NOS ",
+            "Yes - seizures well controlled with anti-seizure medications (ASM)",
+            "Yes - seizures not controlled despite 2 well-chosen ASM (drug-resistant)",
+            "Data not provided"
+          ]
+        },
+        {
+          "prompt": "Motor disorder",
+          "id": "eefa2336-e2a0-4c97-8103-019b32c9f568",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Developmental issues",
+          "id": "2f9fb0b4-e402-4dc0-874b-0095394648e3",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "mRS",
+          "id": "d14ef10a-4108-44d5-a1e1-5e35f3aaa965",
+          "type": "number"
+        },
+        {
+          "prompt": "Developmental issues",
+          "id": "9ead5723-468b-44bd-bd5e-35a345e1a5d3",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Additional educational needs",
+          "id": "3db726dd-a7fb-43da-a1a2-2c2d96e3b638",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Additional educational needs - details",
+          "id": "4e392a2a-f3cb-42d5-8769-2d4de023a672",
+          "type": "text",
+          "depends_on": {
+            "id": "3db726dd-a7fb-43da-a1a2-2c2d96e3b638",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": "Neuropsych?",
+          "id": "48759753-29d2-4bf3-bcfb-8fab7d3b786c",
+          "type": "select",
+          "options": "yes-no-unknown"
+        },
+        {
+          "prompt": "Neuropsych? - details",
+          "id": "788fa67a-4e21-4726-8694-8c23176bd4da",
+          "type": "text",
+          "depends_on": {
+            "id": "48759753-29d2-4bf3-bcfb-8fab7d3b786c",
+            "value": "Yes"
+          }
+        },
+        {
+          "prompt": " No. of ASM",
+          "id": "33d5097d-a21f-4234-9b20-5c09c24e8103",
+          "type": "number"
+        }
+      ]
+    }
+  ],
+  "responseID_field": "97cd6fa6-2b6b-466e-bc83-c0ee6c7760f4"
+}
