@@ -12,15 +12,15 @@ export default function SelectComponent({question, field}: QuestionInputComponen
 
     return (
         <Select onValueChange={field.onChange} value={field.value}>
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-[180px] cursor-pointer">
                 <SelectValue placeholder="Select an option" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className='cursor-default'>
                 <SelectGroup>
                     <SelectLabel>{question.prompt}</SelectLabel>
                     {options.map((option) => {
                         return (
-                            <SelectItem key={option} value={option}>
+                            <SelectItem  className='cursor-pointer' key={option} value={option}>
                                 {option}
                             </SelectItem>
                         )
