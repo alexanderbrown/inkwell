@@ -1,3 +1,5 @@
+import NHS_trusts from './NHS_trusts.json'
+
 export const predefinedOptionLists = {
     'yes-no': [
         'Yes',
@@ -30,5 +32,6 @@ export const predefinedOptionLists = {
         'Male',
         'Female',
         'Unknown'
-    ]
+    ],
+    'NHS-trusts': NHS_trusts as Array<string>,
 }

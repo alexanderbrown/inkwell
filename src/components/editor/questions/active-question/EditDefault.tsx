@@ -34,6 +34,7 @@ export default function EditDefault({question, updateQuestion}: defaultProps) {
                 value: e.target.value === "" ? undefined :parseFloat(e.target.value)
             })}/>
         case 'date':
+            // TODO: Allow for 'today' as a default value [date the form is filled out]
             content =  <Input className="bg-card" type="date" value={question.default} onChange={(e)=> updateQuestion({
                 id: question.id, 
                 field: "default", 

@@ -4,13 +4,12 @@ Inkwell is designed to allow clinicians to quickly develop data collection forms
 All code is executed client-side, with responses saved as a per-subject CSV file. The intention is that this file is then emailed to the study organiser via secure NHS mail, who may then collate responses.
 
 # Current State
-The project is currently in proof of concept phase. It is not yet intended for use in clinical work. 
+The project is currently in a beta phase, with a limited number of available studies. There is a fully functioning study editor, but no ability for users to upload new studies (no study database, yet)
 
 # Future development
 We intend that Inkwell will be expanded rapidly. There are many features we're keen to add, including:
 * A greater variety of question types
-* Ability to save partial responses; multi-user responses including senior sign-off
-* User-friendly collection form design (drag and drop UI). For now, studies must be manually defined using JSON. Please see below for documentation of the expected format
+* Study database with authenticated users able to log in and create / edit studies
 
 # Study
 This root object defines the properties of the entire study. 
@@ -23,6 +22,7 @@ This root object defines the properties of the entire study.
 | `pages`     | yes      |  An array of `Page` objects |
 | `responseID_field` | no | If a valid question key is specified, the response to that question will be used as the responseID. If not, a random UUID (v4) will be used. |
 | `options`   | no       | Configuration options      |
+|`id`        | yes       | UUID for the study |
 
 ## Configuration options
 | Field       | Notes |
@@ -74,15 +74,12 @@ Input a number. This could be an integer or a decimal, but the control will defa
 >  * Individual lab results e.g. potassium level
 
 ### `temperature`
-Essentially the same as `number`, but the step increment for the control is set to 0.1. The control will still accept additional decimal places, if typed in by the use.
+Essentially the same as `number`, but the step increment for the control is set to 0.1. The data is stored as degrees celsius, but the user can choose to enter data in Fahrenheit, if preferred. The control will still accept additional decimal places, if typed in by the user.
 
 ### `date`
 A date without a specified time
 #### `default` field:
 * Format as `yyyy-MM-dd` 
-* Can also specify `'today'` to set to the date the report is started 
-
-TODO: implement 'today'
 
 > Example uses:
 > * Date of presentation
@@ -94,14 +91,16 @@ TODO: implement 'today'
     ```['inpatient', 'outpatient', 'other']```
 * You may also use a predefined options list. Current values are:
   * `'yes-no'`
+  * `'yes-no-unknown'`
+  * `'months'`
+  * `'male-female'`
+  * '`male-female-unknown'`
   * `'nhs-trust'`
-
-TODO: implement predefined list options
 
 ## Branch questions (`depends-on`)
 
 To set a questions as a branch question, use the `depends-on` field. This should consist of the `id` of the parent question, and the `value` which, if matched, will result in the branch question being displayed. 
 
-Note that, in principal, a branch question can precede the question it depends upon. This is strongly discouraged, as it is highly likely to result in the user missing the branch question. It is encouraged to only use branch questions directly after the parent question.
+The `value` field can also take an array of values, which will enable the field when the parent question matches any of these. Note that this is not, at present, implemented in the editor, requiring manual JSON editing. 
 
-TODO: Branch pages (not currently implemented)
+Note that, in principal, a branch question can precede the question it depends upon. This is strongly discouraged, as it is highly likely to result in the user missing the branch question. It is encouraged to only use branch questions directly after the parent question.

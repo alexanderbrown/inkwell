@@ -1,5 +1,4 @@
 // TODO: Fix the 123 icon spacing
-// TODO: Move the new question options in to a popover
 
 import Head from "next/head";
 import { useState} from "react";

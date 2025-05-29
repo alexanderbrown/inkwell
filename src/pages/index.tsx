@@ -52,12 +52,20 @@ export default function Home() {
       </main>
       <footer className="flex h-24 w-full items-center justify-center border-t">
         <div className='flex items-center justify-center flex-col'>
-            <p>Designed and managed by <Link href='mailto:alexander.brown5@nhs.net'>Alex Brown</Link></p>
+        <div className="flex flex-row items-center text-sm mb-2">
+            <p>Inkwell© 2025 by <a href='mailto:alexander.p.brown@ucl.ac.uk'>Alex Brown</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></p>
+            <img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" className="w-4 h-4 ml-1 inline-block"/>
+            <img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" className="w-4 h-4 ml-1 inline-block"/>
+            <img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" className="w-4 h-4 ml-1 inline-block"/>
+            <img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" className="w-4 h-4 ml-1 inline-block"/>
+        </div>
           <Link href="https://www.flaticon.com/free-icons/ink" 
              title="ink icons"
              className='text-slate-500 text-xs'>
               Ink icons created by Freepik - Flaticon
           </Link>
+          
+          
         </div>
       </footer>
     </>
