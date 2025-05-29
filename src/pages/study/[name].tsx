@@ -7,8 +7,11 @@ export default function StudyPage() {
     const { name } = useRouter().query as {name: string};
     const study = api.study.get.useQuery({ name }).data || null;
 
-    if (!study) {
+    if (study === undefined) {
         return ErrorPage(name);
+    }
+    if (study === null) {
+        return <></>
     }
 
     return (<>

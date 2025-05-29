@@ -32,6 +32,23 @@ export const studyRouter = createTRPCRouter({
       .filter((file) => file.endsWith(`.${STUDY_FILE_EXTENSION}`))
       .map((file) => basename(file, `.${STUDY_FILE_EXTENSION}`));
 
-    return studies;
+    let studyDescriptions: {name: string, study?: Study}[] = []
+    for (const studyName of studies) {
+      const filePath = `${STUDY_BASE_PATH}/${studyName}.${STUDY_FILE_EXTENSION}`;
+      const study = loadStudy(filePath);
+      if (study) {
+        studyDescriptions.push({
+          name: studyName,
+          study
+        });
+      }
+      else {
+        studyDescriptions.push({
+          name: studyName,
+          study: undefined
+        });
+      }
+    }
+    return studyDescriptions;
   }),
 });
