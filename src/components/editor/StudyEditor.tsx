@@ -49,7 +49,7 @@ export default function StudyEditor({study, setStudy}: StudyEditorProps) {
                     <CardContent className="grid grid-cols-2 gap-2 w-full">
                         <Label className="text-sm font-semibold">Short Name</Label>
                         <Input value={study.name_short} onChange={(e) => {
-                            if (allStudies.find((s) => s === e.target.value)) {
+                            if (allStudies.find((s) => s.name === e.target.value)) {
                                 alert("Study with this short name already exists")
                                 return
                             }

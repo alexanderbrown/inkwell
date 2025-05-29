@@ -7,7 +7,7 @@ interface PagesNavigationProps {
     form_validated: boolean;
 }
 
-export default function PagesNavigation({step, totalSteps, handleBack, form_validated}: PagesNavigationProps) {
+export default function PagesNavigation({step, totalSteps, form_validated}: PagesNavigationProps) {
     const finalPage = step === totalSteps - 1;
     return (
         <div className="flex space-x-4 justify-center">

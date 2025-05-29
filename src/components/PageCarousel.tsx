@@ -55,8 +55,8 @@ export default function PageCarousel({study}: {study: Study}) {
         return requiredFieldValues[index] === undefined || requiredFieldValues[index] === ''
     })
         
-    const onSubmit = async (formData: Object, event?: Partial<BaseSyntheticEvent>) => {
-        event?.preventDefault && event.preventDefault();
+    const onSubmit = async (formData: object, event?: Partial<BaseSyntheticEvent>) => {
+        if (event?.preventDefault) event.preventDefault();
         if ((step < totalSteps - 1) && (event?.type !== 'partial')) {
           setStep(step + 1)
         } else {
@@ -64,13 +64,13 @@ export default function PageCarousel({study}: {study: Study}) {
           const status = event?.type === 'partial' ? 'partial' : 'complete';
 
           const prefix_fields = ['study_id', 'study_name_short', 'study_name_full', 'status']
-          const prefix_field_values = [study.id, study.name_short, study.name_full || '',  status]
+          const prefix_field_values = [study.id, study.name_short, study.name_full ?? '',  status]
           const processedResponses = processResponses(formData, study)
-          const responseID = (processedResponses[study.responseID_field || '']?.response || uuidv4()) 
+          const responseID = (processedResponses[study.responseID_field ?? '']?.response as string || uuidv4()) 
           downloadCSV({header: [...prefix_fields, ...Object.keys(processedResponses)],
                        body: [
-                                [...prefix_fields, ...Object.values(processedResponses).map((item) => item.prompt)],
-                                [...prefix_field_values, ...Object.values(processedResponses).map((item) => item.response)]
+                                [...prefix_fields, ...Object.values(processedResponses).map((item) => item.prompt) as string[]],
+                                [...prefix_field_values, ...Object.values(processedResponses).map((item) => item.response) as string[]]
 
                                 ],
                        filename: responseID + '.csv'})
