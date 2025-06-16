@@ -8,7 +8,7 @@ interface downloadCSVProps {
     filename: string;
 }
 
-export function parseCSV(csvString: string, study: Study): Record<string, string|number|boolean> | {error: string} {
+export function parseCSV(csvString: string, study: Study): Record<string, string|number|boolean|undefined> | {error: string} {
     // Parse the CSV string into an array of arrays
     const results_raw = parse(csvString, {
         columns: false,
@@ -19,11 +19,9 @@ export function parseCSV(csvString: string, study: Study): Record<string, string
     let ids = results_raw[0]!;
     let values = results_raw[2]!;
     // Create an object mapping IDs to their corresponding values
-    let results: Record<string, string|number|boolean> = {};
+    let results: Record<string, string|number|boolean|undefined> = {};
     ids.forEach((id, index) => {
-        if (id && values[index]) {
             results[id] = values[index];
-        }
     });
     const study_id = results['study_id'];
     if (!study_id) {
