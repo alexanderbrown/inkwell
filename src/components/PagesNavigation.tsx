@@ -7,11 +7,11 @@ interface PagesNavigationProps {
     form_validated: boolean;
 }
 
-export default function PagesNavigation({step, totalSteps, form_validated}: PagesNavigationProps) {
+export default function PagesNavigation({step, totalSteps, handleBack, form_validated}: PagesNavigationProps) {
     const finalPage = step === totalSteps - 1;
     return (
         <div className="flex space-x-4 justify-center">
-            {/* <Button
+            <Button
                 type="button"
                 className="font-medium cursor-pointer"
                 size="sm"
@@ -19,7 +19,7 @@ export default function PagesNavigation({step, totalSteps, form_validated}: Page
                 disabled={step === 0}
             >
                 Back
-            </Button> */}
+            </Button>
             {finalPage ? <FinishButton disabled={!form_validated}/> : <NextPageButton />}
         </div>
     )
