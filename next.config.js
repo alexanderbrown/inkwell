@@ -22,6 +22,7 @@ const config = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+  devIndicators: false
 };
 
 export default config;
