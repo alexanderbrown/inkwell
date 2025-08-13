@@ -49,7 +49,11 @@ export function parseCSV(csvString: string, study: Study): Record<string, string
             } else if (question.type === 'boolean') {
                 results[key] = results[key] === 'True';
             } 
-        }})
+        }
+        if (results[key] === 'N/A' || results[key] === study.options?.hidden_question_placeholder) {
+            results[key] = undefined; // Convert 'N/A' or hidden placeholder to undefined
+        }
+    })
     return results;
 }
 
