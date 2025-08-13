@@ -5,6 +5,9 @@
     "name": "Dr Tom Rossor",
     "email": "Thomas.Rossor@gstt.nhs.uk"
   },
+  "options": {
+    "anonymise_dates": true
+  },
   "id": "f544bf78-882b-45e7-858f-f9dd56ab2622",
   "pages": [
     {
@@ -308,7 +311,8 @@
         {
           "prompt": "Fever Onset Date",
           "id": "3e6a0279-c88a-4db3-a180-168f2b281867",
-          "type": "date"
+          "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683"
         },
         {
           "prompt": "Fever timing with respect to onset of neurological symptoms",
@@ -379,7 +383,8 @@
         {
           "prompt": "Date of encephalopathy onset",
           "id": "f9d09c78-4297-47b4-8cbb-4a526031e05d",
-          "type": "date"
+          "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683"
         },
         {
           "prompt": "Were seizures present?",
@@ -391,6 +396,7 @@
           "prompt": "Seizure onset date",
           "id": "52a8c708-c0d7-4db2-ba08-08d18329e1af",
           "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683",
           "depends_on": {
             "id": "ce6da102-36d0-44af-9239-aaba20d8f82d",
             "value": "Yes"
@@ -454,7 +460,8 @@
         {
           "prompt": "Date of hospital admission",
           "id": "eeca44a2-fda3-449d-bca2-7f57b55a4683",
-          "type": "date"
+          "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683"
         },
         {
           "prompt": "Status epilepticus / repeated seizures without recovery",
@@ -499,6 +506,7 @@
           "prompt": "Movement disorder onset",
           "id": "82cb6fdb-aed6-4d4d-bd6f-3ea4a1ea60a7",
           "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683",
           "depends_on": {
             "id": "7fab70dd-26ad-4a4a-a0b0-e478ed955695",
             "value": "Yes"
@@ -514,6 +522,7 @@
           "prompt": "Motor deficit - onset",
           "id": "aee3d743-6e4b-41f1-8c63-278ef58510c5",
           "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683",
           "depends_on": {
             "id": "d56735a8-0599-48a3-b07c-b055d76c17f1",
             "value": "Yes"
@@ -529,6 +538,7 @@
           "prompt": "Dysautonomia - onset",
           "id": "34e2ab89-f29a-4a8a-9775-0e2746d08ccf",
           "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683",
           "depends_on": {
             "id": "ece84be6-1429-40d1-bfad-52fbe8f9de26",
             "value": "Yes"
@@ -544,6 +554,7 @@
           "prompt": "Visual impairment - onset",
           "id": "9507f0e1-bb08-4584-b343-02349943323b",
           "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683",
           "depends_on": {
             "id": "a96b08ba-d8ee-4be0-8580-d193fc25932f",
             "value": "Yes"
@@ -559,6 +570,7 @@
           "prompt": "Ataxia/gait instability - onset",
           "id": "43c647b6-fba6-45d0-ac31-e8502987ebee",
           "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683",
           "depends_on": {
             "id": "0d60179a-bc4f-4ede-a2bf-a88a561b89a3",
             "value": "Yes"
@@ -574,6 +586,7 @@
           "prompt": "Sleep disturbances - onset",
           "id": "141fce7b-9732-4cd2-997b-5338c213563d",
           "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683",
           "depends_on": {
             "id": "58160682-45b3-4fd7-8ecb-374624d94ffd",
             "value": "Yes"
@@ -589,6 +602,7 @@
           "prompt": "Speech disturbances - onset",
           "id": "f8713fb7-a508-4bfe-9bb4-774305b4a4b5",
           "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683",
           "depends_on": {
             "id": "70e403ed-8546-4872-8a5c-3cbe92a52718",
             "value": "Yes"
@@ -604,6 +618,7 @@
           "prompt": "Other symptoms - onset",
           "id": "1e53a236-744a-4050-a9d3-13f4a5ba5f04",
           "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683",
           "depends_on": {
             "id": "8db78bcd-e3b2-43a1-9f48-ad21fff8781c",
             "value": "Yes"
@@ -888,7 +903,8 @@
         {
           "prompt": "MRI Date",
           "id": "54d065b4-6f36-4889-9585-0910b42daeec",
-          "type": "date"
+          "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683"
         },
         {
           "prompt": "Days between onset of neurological symptoms and first MRI",
@@ -952,7 +968,8 @@
         {
           "prompt": "EEG Date",
           "id": "04b54225-4104-44aa-913f-d497eb52a1d9",
-          "type": "date"
+          "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683"
         },
         {
           "prompt": "EEG timing from neurological symptoms onet (days)",
@@ -1098,6 +1115,7 @@
           "prompt": "Date of ICU Admission",
           "id": "7544ac55-2e99-4a9f-a402-0b5530616292",
           "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683",
           "depends_on": {
             "id": "23765fdc-b54b-4aa7-b4a5-a56b6ab72fb8",
             "value": "Yes"
@@ -1107,6 +1125,7 @@
           "prompt": "Date of ICU Discharge",
           "id": "a40f154a-52e2-4942-854d-4c96910e7fa1",
           "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683",
           "depends_on": {
             "id": "23765fdc-b54b-4aa7-b4a5-a56b6ab72fb8",
             "value": "Yes"
@@ -1122,6 +1141,7 @@
           "prompt": "Date of Intubation",
           "id": "528f1bb6-2f6a-4d72-ba54-b3d4bff4bafa",
           "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683",
           "depends_on": {
             "id": "1bd397e7-1ad1-4282-a5cb-e452a3f17be4",
             "value": "Yes"
@@ -1131,6 +1151,7 @@
           "prompt": "Date of Extubation",
           "id": "18cbaa2b-0098-4c8e-8e85-e262e4609f32",
           "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683",
           "depends_on": {
             "id": "1bd397e7-1ad1-4282-a5cb-e452a3f17be4",
             "value": "Yes"
@@ -1218,6 +1239,7 @@
           "prompt": "IV steroids - start date",
           "id": "b57c3ddf-2650-4ce8-98f8-0e44c2f930e5",
           "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683",
           "depends_on": {
             "id": "13db3624-a0e5-4531-a17d-c692c204c2f3",
             "value": "Yes"
@@ -1227,6 +1249,7 @@
           "prompt": "IV steroids - stop date",
           "id": "e2921ea6-013f-429f-a638-4eb77270ab10",
           "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683",
           "depends_on": {
             "id": "13db3624-a0e5-4531-a17d-c692c204c2f3",
             "value": "Yes"
@@ -1246,6 +1269,7 @@
           "prompt": "Oral steroids acute phase (no dropdown) - start date",
           "id": "c44dc697-8ec3-4b59-a056-fa95c187af85",
           "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683",
           "depends_on": {
             "id": "d657d6c7-151f-4fdc-828b-1204608127b9",
             "value": "Yes"
@@ -1255,6 +1279,7 @@
           "prompt": "Oral steroids acute phase (no dropdown) - stop date",
           "id": "a6fa5b3c-b360-4645-af5e-754255acf50d",
           "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683",
           "depends_on": {
             "id": "d657d6c7-151f-4fdc-828b-1204608127b9",
             "value": "Yes"
@@ -1274,6 +1299,7 @@
           "prompt": "IVIG - start date",
           "id": "60cb709f-635b-41fe-a597-de946a855c70",
           "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683",
           "depends_on": {
             "id": "f4971a8a-1f20-4e70-8966-ab6289aa1676",
             "value": "Yes"
@@ -1283,6 +1309,7 @@
           "prompt": "IVIG - stop date",
           "id": "9c392bc4-2669-4041-a876-32795ba38306",
           "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683",
           "depends_on": {
             "id": "f4971a8a-1f20-4e70-8966-ab6289aa1676",
             "value": "Yes"
@@ -1302,6 +1329,7 @@
           "prompt": "PLEX - start date",
           "id": "ae60d3ee-c4e7-4733-aec6-9cffd1e2ba43",
           "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683",
           "depends_on": {
             "id": "090ef29e-355a-4a2b-bb58-8c7c953fa428",
             "value": "Yes"
@@ -1311,6 +1339,7 @@
           "prompt": "PLEX - stop date",
           "id": "430392b1-3f3e-4dbb-9012-622638f01c7a",
           "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683",
           "depends_on": {
             "id": "090ef29e-355a-4a2b-bb58-8c7c953fa428",
             "value": "Yes"
@@ -1458,7 +1487,8 @@
         {
           "prompt": "Date of Discharge",
           "id": "664e0bbb-c4e7-42e6-8a61-8dd37b523a85",
-          "type": "date"
+          "type": "date",
+          "anonymise_relative_to": "eeca44a2-fda3-449d-bca2-7f57b55a4683"
         },
         {
           "prompt": "Abnormal Neurology at Discharge?",

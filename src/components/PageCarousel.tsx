@@ -65,7 +65,13 @@ export default function PageCarousel({study}: {study: Study}) {
 
           const prefix_fields = ['study_id', 'study_name_short', 'study_name_full', 'status']
           const prefix_field_values = [study.id, study.name_short, study.name_full ?? '',  status]
-          const processedResponses = processResponses(formData, study)
+          let processedResponses: ReturnType<typeof processResponses>;
+          try {
+            processedResponses = processResponses(formData, study, status)
+          } catch (error ) {
+            toast.error(`Error processing responses: ${(error as Error).message}`)
+            return
+          }
           const responseID = (processedResponses[study.responseID_field ?? '']?.response as string || uuidv4()) 
           downloadCSV({header: [...prefix_fields, ...Object.keys(processedResponses)],
                        body: [
@@ -145,7 +151,7 @@ export default function PageCarousel({study}: {study: Study}) {
                 </Form>
               </CardContent>
             </Card>
-            <Toaster />
+            <Toaster duration={10000} richColors />
         </div>
     )
 }

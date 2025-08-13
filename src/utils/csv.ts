@@ -30,6 +30,9 @@ export function parseCSV(csvString: string, study: Study): Record<string, string
     if (study_id !== study.id) {
         return {'error': `study_id in CSV (${study_id}) does not match study ID (${study.id})`};
     }
+    if (results.status === 'complete' && study.options?.anonymise_dates) {
+        return {'error': 'Unable to edit a completed study with anonymised dates'};
+    }
     delete results.study_id; // Remove study_id from results
     delete results.study_name_short; // Remove study_name_short from results
     delete results.study_name_full; // Remove study_name_full from results

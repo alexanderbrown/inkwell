@@ -31,32 +31,13 @@ type SelectQuestion = BaseQuestion & {
 type DateQuestion = BaseQuestion & {
     type: "date"
     default?: string
+    anonymise_relative_to?: string 
 }
 type BooleanQuestion = BaseQuestion & {
     type: "boolean"
     default?: boolean
 }
 type Question = StringQuestion | NumberQuestion | SelectQuestion | DateQuestion | BooleanQuestion
-
-& (
-    {
-        type: "string" | "text"
-        default?: string
-    } | {
-        type: "number" |  "temperature" 
-        default?: number
-    } | {
-        type: "select"
-        default?: string
-        options: Array<string> | keyof typeof predefinedOptionLists
-    } | {
-        type: "date"
-        default?: string
-    } | {
-        type: "boolean"
-        default?: boolean
-    }
-)
 
 export type updateQuestionProps = {
     id: string
@@ -106,6 +87,7 @@ type Study = {
     id: string
     options?: {
         hidden_question_placeholder?: string
+        anonymise_dates?: boolean
     },
 }
 
