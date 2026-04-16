@@ -3,10 +3,17 @@
  * for Docker builds.
  */
 import "./src/env.js";
+import { networkInterfaces } from "os";
+
+// const localIPs = Object.values(networkInterfaces())
+//   .flat()
+//   .filter((iface) => iface?.family === "IPv4" && !iface.internal)
+//   .map((iface) => iface?.address || "");
 
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
+  allowedDevOrigins: ["localhost.*",],
 
   /**
    * If you are using `appDir` then you must comment the below `i18n` config out.
@@ -16,11 +23,6 @@ const config = {
   i18n: {
     locales: ["en"],
     defaultLocale: "en",
-  },
-  eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
-    ignoreDuringBuilds: true,
   },
   devIndicators: false
 };

@@ -1,9 +1,9 @@
 import { NextResponse, userAgent } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-console.log('Middleware loaded');
+console.log('Proxy loaded');
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { device } = userAgent(request);
   console.log('User Agent:', request.headers.get('user-agent'));
 
