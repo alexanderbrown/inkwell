@@ -7,7 +7,7 @@ export default function Date({question, field}: QuestionInputComponentProps): Re
         throw new Error(`Date component received a question of type ${question.type}`);
     }
     return (
-        // TODO: Use a better styled date picker with popover and calendar components
+        // TODO (P3): Use a better styled date picker with popover and calendar components
         <Input
             {...field}
             type="date"
