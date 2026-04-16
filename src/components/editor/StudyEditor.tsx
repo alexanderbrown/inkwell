@@ -11,6 +11,8 @@ import { Input } from "~/components/ui/input";
 import { Label } from "~/components/ui/label";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "~/components/ui/select"
 import { api } from "~/utils/api";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import { IoMdInformationCircleOutline } from "react-icons/io";
 
 
 type StudyEditorProps = {
@@ -23,7 +25,7 @@ export default function StudyEditor({study, setStudy}: StudyEditorProps) {
     const allStudies = api.study.list.useQuery().data || [];
     
 
-    const [detailsOpen, setDetailsOpen] = useState(false)
+    const [detailsOpen, setDetailsOpen] = useState(true)
 
     if (!study) {
         return null
@@ -33,21 +35,42 @@ export default function StudyEditor({study, setStudy}: StudyEditorProps) {
 
     return (
         <Card>
-            <Collapsible>
+            <Collapsible open={detailsOpen} onOpenChange={setDetailsOpen}>
                 <div className="px-6 flex flex-row gap-2 items-center">
                     <CardTitle className="text-lg font-semibold">{study.name_short}</CardTitle>
+                    <CardDescription className="text-lg">
+                        <h2>
+                            Study Information {detailsOpen ? "(Click to collapse)" : "(Click to expand)"}
+                        </h2>
+                    </CardDescription>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                            <IoMdInformationCircleOutline className="text-lg text-primary w-6" size={16} />
+                        </TooltipTrigger>
+                        <TooltipContent>
+                            <p className="whitespace-pre-line">Basic information about the study</p>
+                        </TooltipContent>
+                    </Tooltip>
                     <CollapsibleTrigger className="text-lg font-semibold" asChild>
-                        <Button variant="outline" className="text-sm transition cursor-pointer h-6" onClick={() => setDetailsOpen(!detailsOpen)}>
-                                {detailsOpen ? <VscChevronUp /> : <VscChevronDown />}
-                        </Button> 
+                            <Button variant="outline" className="text-sm transition cursor-pointer h-6">
+                                    {detailsOpen ? <VscChevronUp /> : <VscChevronDown />}
+                            </Button> 
                     </CollapsibleTrigger>
                 </div>
-                <CardDescription className="px-6 text-sm">
-                        {study.pages.flatMap((p) => p.questions).length} questions
-                </CardDescription>
+                
                 <CollapsibleContent className="pt-4">
                     <CardContent className="grid grid-cols-2 gap-2 w-full">
-                        <Label className="text-sm font-semibold">Short Name</Label>
+                        <div className="flex flex-row items-center">
+                            <Label className="text-sm font-semibold">Short Name</Label>
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <IoMdInformationCircleOutline className="text-lg text-primary w-6" size={16} />
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p className="whitespace-pre-line">This should be a short identifier, such as an acronym</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        </div>
                         <Input value={study.name_short} onChange={(e) => {
                             if (allStudies.find((s) => s.name === e.target.value)) {
                                 alert("Study with this short name already exists")
@@ -55,13 +78,53 @@ export default function StudyEditor({study, setStudy}: StudyEditorProps) {
                             }
                             setStudy({...study, name_short: e.target.value})
                         }} />
-                        <Label className="text-sm font-semibold">Full Name</Label>
+                        <div className="flex flex-row items-center">
+                            <Label className="text-sm font-semibold">Full Name</Label>
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <IoMdInformationCircleOutline className="text-lg text-primary w-6" size={16} />
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p className="whitespace-pre-line">The full name of the study</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        </div>
                         <Input value={study.name_full} onChange={(e) => setStudy({...study, name_full: e.target.value ? e.target.value : undefined})}/>
-                        <Label className="text-sm font-semibold">Contact Name</Label>
+                        <div className="flex flex-row items-center">
+                            <Label className="text-sm font-semibold">Contact Name</Label>
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <IoMdInformationCircleOutline className="text-lg text-primary w-6" size={16} />
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p className="whitespace-pre-line">The name of the primary contact for the study</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        </div>
                         <Input value={study.contact.name} onChange={(e) => setStudy({...study, contact: {...study.contact, name: e.target.value}})}/>
-                        <Label className="text-sm font-semibold">Contact Email</Label>
+                        <div className="flex flex-row items-center">
+                            <Label className="text-sm font-semibold">Contact Email</Label>
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <IoMdInformationCircleOutline className="text-lg text-primary w-6" size={16} />
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p className="whitespace-pre-line">The email of the primary contact for the study</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        </div>
                         <Input value={study.contact.email} onChange={(e) => setStudy({...study, contact: {...study.contact, email: e.target.value}})}/>
-                        <Label className="text-sm font-semibold">ResponseID Field</Label>
+                        <div className="flex flex-row items-center">
+                            <Label className="text-sm font-semibold">ResponseID Field</Label>
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <IoMdInformationCircleOutline className="text-lg text-primary w-6" size={16} />
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p className="whitespace-pre-line">The field to use for the response ID. You'll need to add this first, in the editor below.</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        </div>
                         <Select defaultValue={study.responseID_field} onValueChange={(value) => setStudy(
                             {
                                 ...study, 
@@ -80,7 +143,17 @@ export default function StudyEditor({study, setStudy}: StudyEditorProps) {
                                 </SelectGroup>
                             </SelectContent>
                         </Select>
-                        <Label className="text-sm font-semibold">Hidden Question Placeholder</Label>
+                        <div className="flex flex-row items-center">
+                            <Label className="text-sm font-semibold">Hidden Question Placeholder</Label>
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <IoMdInformationCircleOutline className="text-lg text-primary w-6" size={16} />
+                                </TooltipTrigger>
+                                <TooltipContent>
+                                    <p className="whitespace-pre-line">The placeholder text used when a question is hidden</p>
+                                </TooltipContent>
+                            </Tooltip>
+                        </div>
                         <Input value={study.options?.hidden_question_placeholder} placeholder="N/A" onChange={(e) => setStudy(
                             {
                                 ...study, 

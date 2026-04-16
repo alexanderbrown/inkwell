@@ -25,6 +25,7 @@ export default function QuestionsEditor({page, study, activeQuestionIndex, setAc
     return (
          <Card>
             <CardTitle className="px-6 text-lg font-semibold">Questions</CardTitle>
+            {page.questions.length === 0 && <CardContent className="text-sm text-muted-foreground">No questions yet. Add one using the buttons below.</CardContent>}
             <CardContent className="flex flex-col">
                 {page.questions.map((question, idx) => (
                     activeQuestionIndex === idx ? 

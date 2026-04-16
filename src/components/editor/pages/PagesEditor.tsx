@@ -21,6 +21,7 @@ export default function PagesEditor({study, setStudy, activePageIndex, setActive
     return (
         <Card>
             <CardTitle className="px-6 text-lg font-semibold">Pages</CardTitle>
+            {study.pages.length === 0 && <CardContent className="text-sm text-muted-foreground">No pages yet. Click the button below to get started by adding a page.</CardContent>}
             <CardContent className="flex flex-col w-full">
                 {study.pages.map((page, idx) => activePageIndex === idx ? 
                     <ActivePage key={page.id} page={page} study={study} setStudy={setStudy} setActivePage={setActivePageIndex}/> :
